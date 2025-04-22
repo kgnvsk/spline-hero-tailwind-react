@@ -123,6 +123,7 @@ export function Squares({
     }
 
     const handleMouseMove = (event: MouseEvent) => {
+      console.log("Mouse move detected on canvas") // Extra debug log
       const rect = canvas.getBoundingClientRect()
       const mouseX = event.clientX - rect.left
       const mouseY = event.clientY - rect.top
@@ -141,6 +142,7 @@ export function Squares({
     }
 
     const handleMouseLeave = () => {
+      console.log("Mouse leave detected on canvas") // Extra debug log
       setHoveredSquare(null)
     }
 
@@ -148,6 +150,7 @@ export function Squares({
     canvas.addEventListener("mouseleave", handleMouseLeave)
 
     // Initial setup
+    resizeCanvas() // Make sure to call this
     requestRef.current = requestAnimationFrame(updateAnimation)
 
     // Cleanup
@@ -166,8 +169,16 @@ export function Squares({
   return (
     <canvas
       ref={canvasRef}
-      className={`w-full h-full border-none ${className ?? ""}`}
-      style={{ display: "block", position: "absolute", top: 0, left: 0, pointerEvents: "auto", zIndex: 10 }}
+      className={`w-full h-full ${className ?? ""}`}
+      style={{ 
+        display: "block", 
+        position: "absolute", 
+        top: 0, 
+        left: 0, 
+        pointerEvents: "auto", 
+        zIndex: 10,
+        cursor: "crosshair" // Add a cursor to make it obvious it's interactive
+      }}
     />
   )
 }

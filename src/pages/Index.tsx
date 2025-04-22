@@ -17,8 +17,8 @@ const Index = () => {
         aria-hidden="true"
       />
       
-      {/* АНИМИРОВАННАЯ СЕТКА */}
-      <div className="fixed inset-0 w-full h-full z-10" style={{ pointerEvents: "auto" }}>
+      {/* АНИМИРОВАННАЯ СЕТКА - Ensures it's in a dedicated layer with nothing overlapping it in the same z-index */}
+      <div className="fixed inset-0 w-full h-full z-10">
         <Squares
           direction="diagonal"
           speed={0.5}
@@ -29,9 +29,9 @@ const Index = () => {
       </div>
       
       {/* ВЕСЬ КОНТЕНТ (z-20) */}
-      <div className="relative z-20 min-h-screen" style={{ pointerEvents: "none" }}>
+      <div className="relative z-20">
         <Spotlight className="pointer-events-none" />
-        <div style={{ pointerEvents: "auto" }}>
+        <div>
           <SplineSceneBasic />
           <Hero />
           <BenefitsSection />
