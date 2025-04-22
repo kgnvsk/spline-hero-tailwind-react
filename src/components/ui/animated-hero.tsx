@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
@@ -20,12 +19,20 @@ function Hero() {
     return () => clearTimeout(timeoutId);
   }, [titleNumber, titles]);
 
+  const handleTelegramClick = (buttonType: string) => {
+    console.log(`${buttonType} button clicked`);
+    try {
+      window.open("https://t.me/vitalii_2get", "_blank", "noopener,noreferrer");
+    } catch (error) {
+      console.error("Error opening Telegram link:", error);
+    }
+  };
+
   return (
     <div className="w-full text-white relative z-10">
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            {/* Основной заголовок: градиент */}
             <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
               <span className="text-3xl md:text-4xl block mb-4 font-russo heading-white">
                 АІ менеджер це:
@@ -55,7 +62,7 @@ function Hero() {
               shimmerColor="#fff"
               background="rgba(0,0,0,1)"
               className="text-white dark:text-white font-russo"
-              onClick={() => window.open("https://t.me/vitalii_2get", "_blank")}
+              onClick={() => handleTelegramClick("Написати нам")}
             >
               Написати нам <PhoneCall className="w-4 h-4" />
             </ShimmerButton>
@@ -63,7 +70,7 @@ function Hero() {
               shimmerColor="#000"
               background="#fff"
               className="text-black font-russo"
-              onClick={() => window.open("https://t.me/vitalii_2get", "_blank")}
+              onClick={() => handleTelegramClick("Отримати демо")}
             >
               Отримати демо <MoveRight className="w-4 h-4" />
             </ShimmerButton>
