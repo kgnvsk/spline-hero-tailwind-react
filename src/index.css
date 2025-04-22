@@ -155,27 +155,5 @@
     }
   }
 
-  /* Star Border Animations for the button's sparkling effect */
-  @keyframes star-movement-top {
-    0% {
-      left: -250%;
-    }
-    100% {
-      left: 100%;
-    }
-  }
-  @keyframes star-movement-bottom {
-    0% {
-      right: -250%;
-    }
-    100% {
-      right: 100%;
-    }
-  }
-  .animate-star-movement-top {
-    animation: star-movement-top 6s linear infinite;
-  }
-  .animate-star-movement-bottom {
-    animation: star-movement-bottom 6s linear infinite;
-  }
+  /* Removed star border animations as they're no longer needed */
 }

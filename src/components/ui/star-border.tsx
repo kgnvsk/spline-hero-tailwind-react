@@ -21,61 +21,27 @@ export function StarBorder<T extends ElementType = "button">({
   ...props
 }: StarBorderProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof StarBorderProps<T>>) {
   const Component = as || "button";
-  // For light variant use a yellowish/white sparkle, for dark use theme foreground
-  const defaultColor =
-    color ||
-    (variant === "light"
-      ? "rgba(255,255,255,0.75)"
-      : "hsl(var(--foreground))");
-
-  // Interior button gradient style per variant
-  const innerClasses =
+  
+  // Simple white button styles based on variant
+  const buttonClasses =
     variant === "light"
       ? cn(
-          "relative z-1 border text-black text-center text-base py-4 px-6 rounded-[20px]",
-          "bg-gradient-to-b from-white to-neutral-100/80 border-zinc-200"
+          "text-black bg-white border border-zinc-200 rounded-full px-6 py-3 transition-transform duration-200 hover:bg-zinc-100"
         )
       : cn(
-          "relative z-1 border text-foreground text-center text-base py-4 px-6 rounded-[20px]",
-          "bg-gradient-to-b from-background/90 to-muted/90 border-border/40"
+          "text-black bg-zinc-100 border border-zinc-200 rounded-full px-6 py-3 transition-transform duration-200 hover:bg-white"
         );
 
   return (
     <Component
       className={cn(
-        "relative inline-block py-[1px] overflow-hidden rounded-[20px] transition-transform duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring/80",
+        buttonClasses,
+        "flex items-center justify-center gap-2 font-medium",
         className
       )}
       {...props}
     >
-      {/* Bottom sparkle */}
-      <div
-        className={cn(
-          "absolute w-[300%] h-[50%] bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0",
-          "opacity-20 dark:opacity-70"
-        )}
-        style={{
-          background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
-          animationDuration: speed,
-        }}
-      />
-      {/* Top sparkle */}
-      <div
-        className={cn(
-          "absolute w-[300%] h-[50%] top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0",
-          "opacity-20 dark:opacity-70"
-        )}
-        style={{
-          background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
-          animationDuration: speed,
-        }}
-      />
-      {/* Button text and inner background */}
-      <div className={innerClasses}>{children}</div>
+      {children}
     </Component>
   );
 }
-
-// Animations (to be added to tailwind.config.ts if not already present)
-// @keyframes star-movement-top/bottom { 0% ... 100% ... }
-

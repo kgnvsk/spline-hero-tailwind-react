@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
@@ -56,13 +55,11 @@ function Hero() {
             </h1>
           </div>
           <div className="flex flex-row gap-3">
-            {/* Темная кнопка */}
-            <StarBorder variant="dark">
-              Написати нам <PhoneCall className="w-4 h-4 ml-2 inline" />
-            </StarBorder>
-            {/* Светлая кнопка */}
             <StarBorder variant="light">
-              Отримати демо <MoveRight className="w-4 h-4 ml-2 inline" />
+              Написати нам <PhoneCall className="w-4 h-4" />
+            </StarBorder>
+            <StarBorder variant="light">
+              Отримати демо <MoveRight className="w-4 h-4" />
             </StarBorder>
           </div>
         </div>
@@ -72,4 +69,3 @@ function Hero() {
 }
 
 export { Hero };
-
