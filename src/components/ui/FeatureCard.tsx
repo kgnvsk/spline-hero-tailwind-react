@@ -22,14 +22,15 @@ export function FeatureCard({ icon: Icon, title, items }: FeatureCardProps) {
         className="z-10"
       />
       <GridPatternBackground size={20} />
-      <div className="relative z-20 flex flex-col">
-        <div className="h-28 flex items-end mb-0">
+      <div className="relative z-20 flex flex-col h-full">
+        <div className="mb-2">
           <Icon className="w-8 h-8 text-white mr-0" />
         </div>
         <p className="text-lg font-extrabold text-white mb-4 font-russo">
           {title}
         </p>
-        <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo flex flex-col mt-0">
+        <div className="flex-grow"></div>
+        <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo">
           {items.map((item, index) => (
             <li key={index} className="flex items-center">
               <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0"></span>
