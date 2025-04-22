@@ -11,14 +11,14 @@ import { Spotlight } from "@/components/ui/spotlight";
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Background is placed with z-index 5 */}
+      {/* Background с z-index 10 */}
       <SiteBackground />
       
-      {/* Spotlight on top of background but below content */}
-      <Spotlight className="z-10" />
+      {/* Spotlight поверх background но под содержимым */}
+      <Spotlight className="z-20" />
       
-      {/* Content with higher z-index */}
-      <div className="relative z-20">
+      {/* Содержимое с более высоким z-index */}
+      <div className="relative z-30">
         <SplineSceneBasic />
         <Hero />
         <BenefitsSection />

@@ -15,7 +15,7 @@ export function Spotlight({
 }: SpotlightProps) {
   const divRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [opacity, setOpacity] = useState(0)
+  const [opacity, setOpacity] = useState(0.5) // Увеличиваем начальную непрозрачность
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -33,11 +33,11 @@ export function Spotlight({
     }
 
     const handleMouseEnter = () => {
-      setOpacity(1)
+      setOpacity(0.8) // Увеличиваем яркость при наведении
     }
 
     const handleMouseLeave = () => {
-      setOpacity(0)
+      setOpacity(0.5) // Менее прозрачный при отведении курсора
     }
 
     const element = divRef.current
@@ -59,7 +59,7 @@ export function Spotlight({
   return (
     <div
       className={cn(
-        'pointer-events-none fixed inset-0 z-30 transition duration-300 opacity-0',
+        'pointer-events-none fixed inset-0 z-20 transition duration-300',
         className
       )}
       style={{ opacity: isClient ? opacity : 0 }}
@@ -69,7 +69,7 @@ export function Spotlight({
         className="absolute inset-0 overflow-hidden"
         style={{
           background: isClient
-            ? `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${fill}15, transparent 40%)`
+            ? `radial-gradient(800px circle at ${position.x}px ${position.y}px, ${fill}25, transparent 50%)`
             : '',
         }}
       />

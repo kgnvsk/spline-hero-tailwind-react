@@ -13,25 +13,28 @@ function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        color: `rgba(255, 255, 255, ${0.8 + i * 0.02})`, // Увеличена яркость и прозрачность
-        width: 3 + i * 0.2, // Еще больше увеличена толщина линий
+        // Делаем цвет светлее, используя светло-голубой/бирюзовый оттенок
+        color: `rgba(160, 220, 255, ${0.3 + i * 0.02})`,
+        // Уменьшаем толщину линий 
+        width: 1 + i * 0.08,
     }));
 
     return (
         <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-full h-full text-white"
+                className="w-full h-full"
                 viewBox="0 0 696 316"
                 fill="none"
                 style={{ 
-                    filter: 'brightness(2) contrast(150%)', 
-                    mixBlendMode: 'screen' 
+                    filter: 'brightness(1.5) contrast(1.2)', 
+                    mixBlendMode: 'plus-lighter',
+                    opacity: 0.8
                 }}
             >
                 <title>Background Paths</title>
                 {paths.map((path) => (
                     <motion.path
-                        key={`path-${path.id}-${position}-${Math.random()}`}
+                        key={`path-${path.id}-${position}`}
                         d={path.d}
                         stroke={path.color}
                         strokeWidth={path.width}
@@ -56,10 +59,10 @@ function FloatingPaths({ position }: { position: number }) {
 export function SiteBackground() {
     return (
         <div 
-            className="fixed inset-0 z-[1] w-full h-full pointer-events-none overflow-hidden"
+            className="fixed inset-0 z-10 w-full h-full pointer-events-none overflow-hidden"
             style={{ 
-                mixBlendMode: 'screen', 
-                background: 'rgba(0,0,0,0.5)' 
+                mixBlendMode: 'normal', 
+                background: 'transparent' 
             }}
         >
             <div className="absolute inset-0 opacity-100">
