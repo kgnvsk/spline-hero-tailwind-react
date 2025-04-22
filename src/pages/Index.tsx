@@ -18,8 +18,13 @@ const Index = () => {
         aria-hidden="true"
       />
       
-      {/* Grid placed above content but with pointer-events enabled */}
-      <div className="fixed inset-0 w-full h-full" style={{ zIndex: 30 }}>
+      {/* Spotlight effect */}
+      <div className="fixed inset-0" style={{ zIndex: 1 }}>
+        <Spotlight className="pointer-events-none" />
+      </div>
+      
+      {/* Animated grid with hover effects */}
+      <div className="fixed inset-0 w-full h-full" style={{ zIndex: 2 }}>
         <Squares
           direction="diagonal"
           speed={0.5}
@@ -29,13 +34,8 @@ const Index = () => {
         />
       </div>
       
-      {/* Spotlight effect (beneath grid) */}
-      <div className="fixed inset-0" style={{ zIndex: 20 }}>
-        <Spotlight className="pointer-events-none" />
-      </div>
-      
-      {/* Content beneath everything */}
-      <div className="relative" style={{ zIndex: 10 }}>
+      {/* Main content */}
+      <div className="relative z-10">
         <SplineSceneBasic />
         <Hero />
         <BenefitsSection />
