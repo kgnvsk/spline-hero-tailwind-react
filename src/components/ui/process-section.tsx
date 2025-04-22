@@ -41,25 +41,24 @@ const steps = [
   }
 ];
 
-// SVG-кривая между карточками
+// SVG-кривая между карточками с улучшенными соединениями
 function ZigzagConnector() {
-  // Координаты для линий от центра одной карточки к центру следующей
   return (
     <svg className="absolute left-0 top-0 w-full h-full z-0 pointer-events-none" style={{overflow: "visible"}}>
       <defs>
         <linearGradient id="zigzagline" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#8367FA" />
-          <stop offset="1" stopColor="#45B2FF" />
+          <stop stopColor="#6366f1" />
+          <stop offset="1" stopColor="#8b5cf6" />
         </linearGradient>
       </defs>
-      {/* Линия из 1 -> 2 */}
-      <path d="M50,110 Q220,140 220,250" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
-      {/* Линия из 2 -> 3 */}
-      <path d="M320,250 Q90,300 90,390" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
+      {/* Исправленная линия из 1 -> 2 */}
+      <path d="M130,110 C180,160 180,240 240,250" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
+      {/* Исправленная линия из 2 -> 3 */}
+      <path d="M320,250 C250,280 180,330 130,390" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
       {/* Линия из 3 -> 4 */}
-      <path d="M220,390 Q400,420 400,500" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
+      <path d="M220,390 C400,420 400,500 400,500" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
       {/* Линия из 4 -> 5 */}
-      <path d="M520,500 Q290,540 290,630" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
+      <path d="M520,500 C290,540 290,630 290,630" stroke="url(#zigzagline)" strokeWidth="3" fill="none" />
     </svg>
   );
 }
@@ -67,10 +66,7 @@ function ZigzagConnector() {
 export function ProcessSection() {
   return (
     <div
-      className="py-20 bg-white relative overflow-visible dark:bg-black"
-      style={{
-        background: "repeating-linear-gradient(0deg,#f5f7fa, #f5f7fa 39px, #edeef1 40px, #edeef1 41px)"
-      }}
+      className="py-20 bg-black relative overflow-visible"
     >
       {/* Header section */}
       <div className="container mx-auto px-6 mb-10">
@@ -79,7 +75,7 @@ export function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-3xl md:text-4xl font-bold text-center text-[#23234c] dark:text-neutral-100 mb-2"
+          className="text-3xl md:text-4xl font-bold text-center text-white mb-2"
         >
           Як працює AI Sales Manager
         </motion.h2>
@@ -88,7 +84,7 @@ export function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="text-center text-[#717391] dark:text-neutral-400 max-w-2xl mx-auto"
+          className="text-center text-neutral-400 max-w-2xl mx-auto"
         >
           AI Sales Manager інтегрується у ваші системи та працює на повну потужність
         </motion.p>
@@ -109,11 +105,11 @@ export function ProcessSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: idx * 0.09 }}
-                className="relative z-10 bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-[#ebedf7] dark:border-[#222] px-6 py-5 max-w-[290px] ml-auto"
+                className="relative z-10 bg-neutral-900 rounded-2xl shadow-xl border border-neutral-800 px-6 py-5 max-w-[290px] ml-auto"
                 style={i === 0 ? {marginTop: 0} : {}}
               >
-                <h3 className="text-lg font-bold text-[#23234c] dark:text-white mb-2">{steps[idx].title}</h3>
-                <ul className="text-[#404075] dark:text-neutral-300 text-sm space-y-2">
+                <h3 className="text-lg font-bold text-white mb-2">{steps[idx].title}</h3>
+                <ul className="text-neutral-300 text-sm space-y-2">
                   {steps[idx].description.map((desc, i) => (
                     <li key={i}>{desc}</li>
                   ))}
@@ -130,10 +126,10 @@ export function ProcessSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: idx * 0.09 }}
-                className="relative z-10 bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-[#ebedf7] dark:border-[#222] px-6 py-5 max-w-[290px] mr-auto"
+                className="relative z-10 bg-neutral-900 rounded-2xl shadow-xl border border-neutral-800 px-6 py-5 max-w-[290px] mr-auto"
               >
-                <h3 className="text-lg font-bold text-[#23234c] dark:text-white mb-2">{steps[idx].title}</h3>
-                <ul className="text-[#404075] dark:text-neutral-300 text-sm space-y-2">
+                <h3 className="text-lg font-bold text-white mb-2">{steps[idx].title}</h3>
+                <ul className="text-neutral-300 text-sm space-y-2">
                   {steps[idx].description.map((desc, i) => (
                     <li key={i}>{desc}</li>
                   ))}
@@ -182,9 +178,9 @@ export function ProcessSection() {
       {/* Мобильная версия — прежняя: все карточки и телефон под ними */}
       <div className="lg:hidden block mt-10 px-4">
         {[0, 1, 2, 3, 4].map(idx => (
-          <div key={idx} className="mb-5 bg-white dark:bg-neutral-900 rounded-2xl shadow-md border border-[#ebedf7] dark:border-[#222] px-5 py-4">
-            <h3 className="text-base font-bold text-[#23234c] dark:text-white mb-2">{steps[idx].title}</h3>
-            <ul className="text-[#404075] dark:text-neutral-300 text-sm space-y-1">
+          <div key={idx} className="mb-5 bg-neutral-900 rounded-2xl shadow-md border border-neutral-800 px-5 py-4">
+            <h3 className="text-base font-bold text-white mb-2">{steps[idx].title}</h3>
+            <ul className="text-neutral-300 text-sm space-y-1">
               {steps[idx].description.map((desc, i) => (
                 <li key={i}>{desc}</li>
               ))}
