@@ -10,17 +10,14 @@ import StaticGrid from "@/components/ui/static-grid";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen">
-      {/* Static grid as a fixed background */}
+    <div className="relative min-h-screen bg-black">
       <StaticGrid 
         color="#6b6b6b" 
         size={48} 
         opacity={0.4} 
       />
       
-      {/* Content layer with higher z-index */}
-      <div className="relative z-10 min-h-screen">
-        {/* Spotlight effect */}
+      <div className="relative z-10 min-h-screen bg-black">
         <Spotlight className="pointer-events-none" />
         
         <SplineSceneBasic />
