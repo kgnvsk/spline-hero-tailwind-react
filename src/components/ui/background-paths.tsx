@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -13,14 +14,14 @@ function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        color: `rgba(15,23,42,${0.1 + i * 0.03})`,
-        width: 0.5 + i * 0.03,
+        color: `rgba(255,255,255,${0.1 + i * 0.01})`, // Changed to white for better visibility on black
+        width: 0.8 + i * 0.05, // Increased line thickness
     }));
 
     return (
         <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-full h-full text-slate-950 dark:text-white"
+                className="w-full h-full text-white/50 dark:text-white/70"
                 viewBox="0 0 696 316"
                 fill="none"
             >
@@ -31,11 +32,11 @@ function FloatingPaths({ position }: { position: number }) {
                         d={path.d}
                         stroke="currentColor"
                         strokeWidth={path.width}
-                        strokeOpacity={0.1 + path.id * 0.03}
+                        strokeOpacity={0.2 + path.id * 0.02} // Increased opacity
                         initial={{ pathLength: 0.3, opacity: 0.6 }}
                         animate={{
                             pathLength: 1,
-                            opacity: [0.3, 0.6, 0.3],
+                            opacity: [0.4, 0.7, 0.4], // Increased opacity range
                             pathOffset: [0, 1, 0],
                         }}
                         transition={{
@@ -53,7 +54,7 @@ function FloatingPaths({ position }: { position: number }) {
 export function SiteBackground() {
     return (
         <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none overflow-hidden">
-            <div className="absolute inset-0 opacity-50">
+            <div className="absolute inset-0 opacity-80"> {/* Increased opacity from 50 to 80 */}
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
             </div>
@@ -61,7 +62,7 @@ export function SiteBackground() {
     );
 }
 
-// Оригинальный демо-компонент для standalone использования (не используется глобально)
+// Original demo component for standalone use (not used globally)
 export function BackgroundPaths({
     title = "Background Paths",
 }: {

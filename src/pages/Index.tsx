@@ -9,7 +9,7 @@ import { SiteBackground } from "@/components/ui/background-paths";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black relative">
+    <div className="min-h-screen bg-black relative overflow-hidden">
       <SiteBackground />
       <SplineSceneBasic />
       <Hero />
