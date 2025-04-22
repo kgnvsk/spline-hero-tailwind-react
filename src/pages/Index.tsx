@@ -17,8 +17,8 @@ const Index = () => {
       {/* Spotlight поверх background но под содержимым */}
       <Spotlight className="z-20" />
       
-      {/* Содержимое с более высоким z-index */}
-      <div className="relative z-30">
+      {/* Содержимое с более высоким z-index - теперь оборачиваем весь контент */}
+      <div className="relative z-30 min-h-screen">
         <SplineSceneBasic />
         <Hero />
         <BenefitsSection />

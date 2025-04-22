@@ -13,10 +13,10 @@ function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        // Делаем цвет светлее, используя светло-голубой/бирюзовый оттенок
-        color: `rgba(160, 220, 255, ${0.3 + i * 0.02})`,
-        // Уменьшаем толщину линий 
-        width: 1 + i * 0.08,
+        // Значительно светлее и ярче линии, более насыщенный голубой цвет
+        color: `rgba(80, 180, 255, ${0.6 + i * 0.03})`,
+        // Увеличиваем толщину линий немного для лучшей видимости
+        width: 1.5 + i * 0.1,
     }));
 
     return (
@@ -26,9 +26,9 @@ function FloatingPaths({ position }: { position: number }) {
                 viewBox="0 0 696 316"
                 fill="none"
                 style={{ 
-                    filter: 'brightness(1.5) contrast(1.2)', 
-                    mixBlendMode: 'plus-lighter',
-                    opacity: 0.8
+                    filter: 'brightness(2) contrast(1.5)', 
+                    mixBlendMode: 'screen',
+                    opacity: 1
                 }}
             >
                 <title>Background Paths</title>
@@ -61,7 +61,7 @@ export function SiteBackground() {
         <div 
             className="fixed inset-0 z-10 w-full h-full pointer-events-none overflow-hidden"
             style={{ 
-                mixBlendMode: 'normal', 
+                mixBlendMode: 'plus-lighter', 
                 background: 'transparent' 
             }}
         >
