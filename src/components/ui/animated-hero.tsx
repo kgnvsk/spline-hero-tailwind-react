@@ -28,8 +28,8 @@ function Hero() {
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
             <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center">
-              <span className="text-3xl md:text-4xl block mb-2">АІ менеджер це:</span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center">
+              <span className="text-3xl md:text-4xl block mb-4">АІ менеджер це:</span>
+              <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span
