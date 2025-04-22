@@ -31,7 +31,7 @@ export function SparklesSection() {
   }, []);
 
   return (
-    <div className="relative h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4 pb-28">
+    <div className="relative h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4 pb-36">
       <h1 className="md:text-lg text-xs lg:text-xl font-bold text-center text-white relative z-20">
         Є питання? Задай нашому голосовому АІ асистенту
       </h1>
@@ -55,12 +55,13 @@ export function SparklesSection() {
         {/* Radial Gradient to prevent sharp edges */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
-      {/* Контейнер для виджета - закреплён внизу справа внутри секции */}
+      {/* Контейнер для виджета — по центру внизу секции */}
       <div
         ref={widgetRef}
-        className="absolute right-4 bottom-4 z-50"
+        className="absolute left-1/2 -translate-x-1/2 bottom-4 z-50"
         style={{ pointerEvents: "auto" }}
       />
     </div>
   );
 }
+
