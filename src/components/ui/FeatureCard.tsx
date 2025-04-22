@@ -26,7 +26,7 @@ export function FeatureCard({ icon: Icon, title, items }: FeatureCardProps) {
         <div className="mb-2">
           <Icon className="w-8 h-8 text-white mr-0" />
         </div>
-        <h3 className="text-lg font-extrabold text-white mb-4 font-russo h-14">
+        <h3 className="text-lg font-extrabold text-white mb-4 font-russo">
           {title}
         </h3>
         <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo mt-auto">

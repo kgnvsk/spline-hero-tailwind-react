@@ -51,7 +51,7 @@ export function FeaturesSection() {
           <motion.div
             key={feature.title}
             variants={itemVariants}
-            className="h-full"
+            className="h-full flex"
           >
             <FeatureCard
               icon={feature.icon}
