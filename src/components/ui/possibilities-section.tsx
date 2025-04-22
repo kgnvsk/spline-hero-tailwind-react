@@ -102,16 +102,16 @@ export function PossibilitiesSection() {
             />
             <Grid size={20} />
             <div className="relative z-20 flex flex-col h-full">
-              <div>
-                <item.icon className="w-8 h-8 text-white mb-4" />
+              <div className="mb-4">
+                <item.icon className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-extrabold mb-6 font-russo text-white">{item.title}</h3>
+              <h3 className="text-lg font-extrabold mb-4 font-russo text-white">{item.title}</h3>
               <div className="flex-1"></div>
-              <ul className="text-neutral-400 text-sm font-russo space-y-3 pl-0 list-none mt-auto">
+              <ul className="text-neutral-400 pl-0 list-none space-y-3 mt-6">
                 {item.description.map((desc, index) => (
                   <li key={index} className="flex items-start">
                     <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0 mt-1.5"></span>
-                    <span>{desc}</span>
+                    <span className="font-russo text-sm">{desc}</span>
                   </li>
                 ))}
               </ul>

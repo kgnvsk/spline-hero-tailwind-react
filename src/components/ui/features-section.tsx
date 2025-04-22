@@ -36,7 +36,7 @@ export function FeaturesSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-4xl font-extrabold text-center font-russo heading-white mb-16"
+        className="text-4xl font-extrabold text-center font-russo heading-white mb-12"
       >
         Основні функції
       </motion.h2>

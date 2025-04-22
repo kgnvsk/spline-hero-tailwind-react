@@ -24,21 +24,21 @@ export function FeatureCard({ icon: Icon, title, items }: FeatureCardProps) {
       <GridPatternBackground size={20} />
       
       <div className="relative z-20 flex flex-col h-full">
-        <div>
-          <Icon className="w-8 h-8 text-white mb-4" />
+        <div className="mb-4">
+          <Icon className="w-8 h-8 text-white" />
         </div>
         
-        <h3 className="text-lg font-extrabold text-white mb-6 font-russo">
+        <h3 className="text-lg font-extrabold text-white mb-4 font-russo">
           {title}
         </h3>
         
         <div className="flex-1"></div>
         
-        <ul className="text-neutral-400 space-y-3 text-sm pl-0 list-none font-russo mt-auto">
+        <ul className="text-neutral-400 space-y-3 pl-0 list-none mt-6">
           {items.map((item, index) => (
             <li key={index} className="flex items-start">
               <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0 mt-1.5"></span>
-              <span>{item}</span>
+              <span className="font-russo text-sm">{item}</span>
             </li>
           ))}
         </ul>
