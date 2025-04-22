@@ -1,7 +1,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MoveRight, PhoneCall } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 function Hero() {
@@ -43,7 +43,7 @@ function Hero() {
                 {titles.map((title, idx) => (
                   <motion.span
                     key={idx}
-                    className="absolute font-semibold whitespace-nowrap font-russo heading-white"
+                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-xl md:text-2xl text-center"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
@@ -58,22 +58,22 @@ function Hero() {
               </span>
             </h1>
           </div>
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-col md:flex-row gap-3 w-full items-center justify-center">
             <ShimmerButton
               shimmerColor="#fff"
               background="rgba(0,0,0,1)"
-              className="text-white dark:text-white font-russo"
+              className="text-white dark:text-white font-russo w-full max-w-xs mb-3 md:mb-0 md:mr-3"
               onClick={() => handleTelegramClick("Написати нам")}
             >
-              Написати нам <PhoneCall className="w-4 h-4" />
+              Написати нам <Phone className="w-4 h-4" />
             </ShimmerButton>
             <ShimmerButton
               shimmerColor="#000"
               background="#fff"
-              className="text-black font-russo"
+              className="text-black font-russo w-full max-w-xs"
               onClick={() => handleTelegramClick("Отримати демо")}
             >
-              Отримати демо <MoveRight className="w-4 h-4" />
+              Отримати демо <ArrowRight className="w-4 h-4" />
             </ShimmerButton>
           </div>
         </div>
@@ -83,3 +83,4 @@ function Hero() {
 }
 
 export { Hero };
+
