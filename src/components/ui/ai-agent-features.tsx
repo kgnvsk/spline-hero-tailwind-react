@@ -1,107 +1,96 @@
 
 import React from "react";
-import { User, Users, Shield } from "lucide-react";
+import { Brain, Users, Shield } from "lucide-react";
+
+// Определяем градиентную иконку-рамку. Используем фиолетовый градиент
+const GradientIconWrapper: React.FC<{children: React.ReactNode}> = ({ children }) => (
+  <div
+    className="w-14 h-14 rounded-xl flex items-center justify-center"
+    style={{
+      background: "linear-gradient(135deg, #9b87f5 10%, #8B5CF6 90%)"
+    }}
+  >
+    {children}
+  </div>
+);
 
 const features = [
   {
     title: "Людський фактор",
-    description:
-      "AI Агент не втомлюється, не ображається, не помиляється, не запізнюється, не забуває, не підвладний емоціям.",
-    icon: <User size={46} className="text-blue-800/15 dark:text-blue-400/10" />,
+    icon: <Brain size={34} className="text-white" />,
+    description: "AI Агент не вигорає, не ображається, не помиляється, не запізнюється, не забуває, не підвладний емоціям."
   },
   {
     title: "Плинність кадрів",
-    description:
-      "Цикл роботи кадрів на даній посаді зазвичай займає від декількох місяців до року. З AI Агентом, ви забезпечені від цього.",
-    icon: <Users size={46} className="text-blue-800/15 dark:text-blue-400/10" />,
+    icon: <Users size={34} className="text-white" />,
+    description: "Цикл роботи кадрів на даній посаді зазвичай займає від декількох місяців до року. З AI Агентом, ви забезпечені від цього."
   },
   {
     title: "Безпека",
-    description:
-      "Ви не втрачаєте цінні знання та навички як це буває зазвичай при звільненні спеціаліста.",
-    icon: <Shield size={46} className="text-blue-800/15 dark:text-blue-400/10" />,
-  },
+    icon: <Shield size={34} className="text-white" />,
+    description: "Ви не втратите цінні знання та навички як це буває зазвичай при звільненні спеціаліста."
+  }
 ];
-
-// Компонент сетки фона
-function GridBG() {
-  return (
-    <div
-      aria-hidden
-      className="absolute inset-0 w-full h-full pointer-events-none -z-10"
-    >
-      <svg
-        width="100%"
-        height="100%"
-        className="w-full h-full"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          minHeight: "100%",
-        }}
-      >
-        <defs>
-          <pattern
-            id="ai-feature-bg"
-            width="80"
-            height="80"
-            patternUnits="userSpaceOnUse"
-          >
-            <rect x="0" y="0" width="80" height="80" fill="none" />
-            <rect x="0" y="0" width="80" height="80" rx="8" ry="8" fill="none" stroke="#262729" strokeWidth="2" />
-          </pattern>
-        </defs>
-        <rect
-          width="100%"
-          height="100%"
-          fill="url(#ai-feature-bg)"
-          opacity="0.16"
-        />
-      </svg>
-      <div className="absolute inset-0 bg-black opacity-80"></div>
-    </div>
-  );
-}
 
 export default function AIAgentFeatures() {
   return (
-    <section className="relative py-20 font-russo select-none z-0 overflow-hidden">
-      <GridBG />
-      <div className="max-w-5xl mx-auto px-4 mb-8 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white text-center mb-7 drop-shadow-lg">
-          Переваги AI Агента
-        </h2>
+    <section className="relative z-0 py-14 px-2 w-full overflow-x-hidden select-none font-russo" style={{ background: "#F8FAFF" }}>
+      {/* Фоновая светлая сетка */}
+      <div
+        aria-hidden
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ zIndex: 0 }}
+      >
+        <svg
+          width="100%"
+          height="100%"
+          className="w-full h-full"
+          style={{ position: "absolute", top: 0, left: 0, minHeight: "100%" }}
+        >
+          <defs>
+            <pattern
+              id="light-grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect x="0" y="0" width="40" height="40" fill="none" />
+              <rect x="0" y="0" width="40" height="40" rx="8" ry="8" fill="none" stroke="#DBE4F7" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect
+            width="100%"
+            height="100%"
+            fill="url(#light-grid)"
+            opacity="1"
+          />
+        </svg>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 relative z-10">
-        {features.map((feature, i) => (
-          <div
-            key={feature.title}
-            className="
-              relative rounded-3xl bg-[#19191c]/70 backdrop-blur-[2px]
-              border border-[#24242b]/40 shadow-lg p-10
-              min-h-[280px] flex flex-col
-              hover:shadow-2xl transition-shadow
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, i) => (
+            <div
+              key={i}
+              className="
+                flex flex-col bg-white rounded-3xl p-10 min-h-[260px] shadow-[0_7px_36px_-8px_rgba(25,31,44,0.13)] transition-all
+                border border-[#f1f3fa] 
+                relative
               "
-            style={{
-              boxShadow: "0 12px 56px 0 rgba(12,12,27,0.28)",
-            }}
-          >
-            <div className="absolute left-8 top-8 z-0 opacity-80">
-              {feature.icon}
-            </div>
-            <div className="flex flex-col h-full relative z-10">
-              <div className="font-extrabold text-white text-2xl md:text-2xl mb-4 leading-snug drop-shadow-sm">
-                {feature.title}
+              style={{
+                // Только лёгкая тень вокруг карточки для воздушности
+              }}
+            >
+              <div className="mb-6">
+                <GradientIconWrapper>
+                  {feature.icon}
+                </GradientIconWrapper>
               </div>
-              <div className="font-russo text-neutral-200 text-lg tracking-tight leading-snug" style={{ textShadow: "0px 1px 2px #10101080" }}>
-                {feature.description}
-              </div>
+              <div className="text-2xl font-extrabold mb-4 text-[#222] font-russo">{feature.title}</div>
+              <div className="text-[18px] text-[#333] font-russo leading-snug">{feature.description}</div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
