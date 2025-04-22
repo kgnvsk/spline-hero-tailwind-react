@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
 import { StarBorder } from "@/components/ui/star-border";
@@ -55,7 +56,7 @@ function Hero() {
             </h1>
           </div>
           <div className="flex flex-row gap-3">
-            <StarBorder variant="light">
+            <StarBorder variant="dark">
               Написати нам <PhoneCall className="w-4 h-4" />
             </StarBorder>
             <StarBorder variant="light">
