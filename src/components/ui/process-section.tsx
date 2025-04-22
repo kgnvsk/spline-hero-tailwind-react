@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { useId } from "react";
@@ -97,20 +96,29 @@ export function ProcessSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-12 relative">
-            {/* Snake path */}
-            <div className="absolute hidden lg:block left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500">
-              {/* Horizontal lines for the snake path */}
-              <div className="absolute top-[15%] h-1 w-36 bg-gradient-to-r from-purple-500 to-blue-500 left-0"></div>
-              <div className="absolute top-[42%] h-1 w-36 bg-gradient-to-r from-blue-500 to-purple-500 right-0"></div>
-              <div className="absolute top-[69%] h-1 w-36 bg-gradient-to-r from-purple-500 to-blue-500 left-0"></div>
+            {/* Snake path - updated to be more curved */}
+            <div className="absolute hidden lg:block" style={{ top: '0', bottom: '0', left: '50%', transform: 'translateX(-50%)' }}>
+              {/* Vertical lines */}
+              <div className="absolute w-1 h-[20%] bg-gradient-to-b from-purple-500 to-blue-500" style={{ top: '0%' }}></div>
+              <div className="absolute w-1 h-[20%] bg-gradient-to-b from-purple-500 to-blue-500" style={{ top: '40%' }}></div>
+              <div className="absolute w-1 h-[20%] bg-gradient-to-b from-purple-500 to-blue-500" style={{ top: '80%' }}></div>
+              
+              {/* Horizontal curved lines */}
+              <div className="absolute h-1 w-64 bg-gradient-to-r from-purple-500 to-blue-500" 
+                   style={{ top: '20%', right: '0', transform: 'translateX(50%)', borderRadius: '0 20px 20px 0' }}></div>
+              <div className="absolute h-1 w-64 bg-gradient-to-r from-blue-500 to-purple-500" 
+                   style={{ top: '60%', left: '0', transform: 'translateX(-50%)', borderRadius: '20px 0 0 20px' }}></div>
             </div>
             
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
                 variants={itemVariants}
-                className={`relative ${index % 2 === 1 ? 'lg:ml-auto' : ''}`}
-                style={{ width: 'calc(100% - 50px)' }}
+                className={`relative ${index % 2 === 0 ? 'lg:mr-32' : 'lg:ml-32'}`}
+                style={{
+                  width: 'calc(100% - 50px)',
+                  marginTop: index === 0 ? '0' : index === 1 ? '80px' : index === 2 ? '40px' : index === 3 ? '80px' : '40px'
+                }}
               >
                 <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden relative">
                   {/* Add Grid pattern similar to features section */}
