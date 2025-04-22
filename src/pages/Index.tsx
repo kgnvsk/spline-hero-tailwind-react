@@ -11,14 +11,15 @@ import StaticGrid from "@/components/ui/static-grid";
 const Index = () => {
   return (
     <>
-      {/* Статичная сетка на заднем плане, вне других контейнеров */}
+      {/* Статичная сетка на заднем плане */}
       <StaticGrid 
         color="#6b6b6b" 
         size={48} 
         opacity={0.4} 
       />
       
-      <div className="min-h-screen bg-transparent relative">
+      {/* Обертка для содержимого с более высоким z-index */}
+      <div className="min-h-screen relative" style={{ zIndex: 1 }}>
         {/* Spotlight layer */}
         <Spotlight className="z-10 pointer-events-none" />
         
