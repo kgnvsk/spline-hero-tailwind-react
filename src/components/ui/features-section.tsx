@@ -19,10 +19,10 @@ export function FeaturesSection() {
               <p className="text-lg font-bold text-white mb-4">
                 {feature.title}
               </p>
-              <ul className="text-neutral-400 space-y-2 text-sm">
+              <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none">
                 {feature.items.map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="mr-2">•</span>
+                    <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
                     <span>{item}</span>
                   </li>
                 ))}
