@@ -102,7 +102,7 @@ export function SparklesSection() {
       {/* Widget container - now shifted further left */}
       <div
         ref={widgetRef}
-        className="absolute bottom-4 left-1/2 transform -translate-x-[75%] z-50"
+        className="absolute bottom-4 left-1/2 transform -translate-x-[65%] z-50"
         style={{ pointerEvents: "auto" }}
       />
     </div>
