@@ -101,76 +101,93 @@ export function ProcessSection() {
           <div className="lg:col-span-2 relative">
             {/* Snake path */}
             <div className="absolute hidden lg:block" style={{ left: '0', right: '50%', top: '0', bottom: '0', zIndex: 0 }}>
-              {/* Horizontal lines */}
-              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
-                  style={{ top: '12%', left: '5%', width: '40%' }}></div>
-              <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
-                  style={{ top: '32%', left: '55%', width: '40%' }}></div>
-              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
-                  style={{ top: '52%', left: '5%', width: '40%' }}></div>
-              <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
-                  style={{ top: '72%', left: '55%', width: '40%' }}></div>
-              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
-                  style={{ top: '92%', left: '5%', width: '40%' }}></div>
+              {/* Vertical lines */}
+              <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500" 
+                   style={{ left: '20%', top: '0', height: '100%' }}></div>
               
-              {/* Vertical connections */}
-              <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500" 
-                  style={{ top: '12%', left: '45%', height: '20%' }}></div>
-              <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500" 
-                  style={{ top: '32%', left: '55%', height: '20%' }}></div>
-              <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500" 
-                  style={{ top: '52%', left: '45%', height: '20%' }}></div>
-              <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500" 
-                  style={{ top: '72%', left: '55%', height: '20%' }}></div>
+              {/* Horizontal connections for each step */}
+              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                   style={{ top: '10%', left: '20%', width: '25%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
+                   style={{ top: '30%', left: '20%', width: '50%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                   style={{ top: '50%', left: '20%', width: '25%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
+                   style={{ top: '70%', left: '20%', width: '50%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                   style={{ top: '90%', left: '20%', width: '25%' }}></div>
             </div>
 
             {/* Process steps */}
-            <div className="relative z-10">
-              {steps.map((step, index) => (
-                <motion.div
-                  key={step.title}
-                  variants={itemVariants}
-                  className="mb-12 last:mb-0"
-                  style={{
-                    width: '85%',
-                    marginLeft: index % 2 === 0 ? '0%' : '15%',
-                    marginRight: index % 2 === 0 ? '15%' : '0%'
-                  }}
-                >
-                  <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden relative">
-                    <Grid size={20} />
-                    <div className="relative z-20">
-                      <h3 className="text-lg font-bold text-white mb-4">
-                        {step.title}
-                      </h3>
-                      <ul className="text-neutral-400 space-y-2">
-                        {step.description.map((desc, i) => (
-                          <li key={i} className="flex items-start">
-                            <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
-                            <span>{desc}</span>
-                          </li>
-                        ))}
-                      </ul>
+            <div className="relative z-10 grid gap-10">
+              {steps.map((step, index) => {
+                // Alternate between left and right positioning
+                const isEven = index % 2 === 0;
+                
+                return (
+                  <motion.div
+                    key={step.title}
+                    variants={itemVariants}
+                    className={`w-full lg:w-[80%] ${isEven ? 'lg:ml-[45%]' : 'lg:ml-0'}`}
+                  >
+                    <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden relative">
+                      <Grid size={20} />
+                      <div className="relative z-20">
+                        <h3 className="text-lg font-bold text-white mb-4">
+                          {step.title}
+                        </h3>
+                        <ul className="text-neutral-400 space-y-2">
+                          {step.description.map((desc, i) => (
+                            <li key={i} className="flex items-start">
+                              <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+                              <span>{desc}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
-          {/* Video/Spline component - Right column (1/3 width) */}
-          <div className="lg:col-span-1 relative h-[500px] lg:h-auto">
+          {/* iPhone mockup with video - Right column (1/3 width) */}
+          <div className="lg:col-span-1 relative">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
-              className="w-full h-full"
+              className="sticky top-[120px] w-full h-full"
             >
-              <SplineScene 
-                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                className="w-full h-full"
-              />
+              <div className="iphone-mockup">
+                {/* iPhone frame */}
+                <div className="relative mx-auto w-[280px] h-[580px]">
+                  {/* Phone outer case */}
+                  <div className="absolute inset-0 rounded-[50px] bg-neutral-800 shadow-xl overflow-hidden border-8 border-neutral-900">
+                    {/* iPhone notch */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[30%] h-[30px] bg-black rounded-b-3xl z-20"></div>
+                    
+                    {/* Screen content */}
+                    <div className="absolute inset-0 overflow-hidden bg-black">
+                      {/* Embedded SplineScene inside iPhone */}
+                      <SplineScene 
+                        scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                        className="w-full h-full scale-[1.5] transform translate-y-[20%]"
+                      />
+                    </div>
+                    
+                    {/* Home indicator */}
+                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-[30%] h-1 bg-white/30 rounded-full"></div>
+                  </div>
+                  
+                  {/* Phone buttons */}
+                  <div className="absolute -left-1 top-[120px] h-12 w-1 bg-neutral-700 rounded-l"></div>
+                  <div className="absolute -left-1 top-[170px] h-12 w-1 bg-neutral-700 rounded-l"></div>
+                  <div className="absolute -right-1 top-[140px] h-16 w-1 bg-neutral-700 rounded-r"></div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
