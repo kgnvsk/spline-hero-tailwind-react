@@ -1,4 +1,3 @@
-
 'use client';
 
 import { motion } from "framer-motion";
@@ -74,4 +73,3 @@ export function SiteBackground() {
 }
 
 export default SiteBackground;
-
