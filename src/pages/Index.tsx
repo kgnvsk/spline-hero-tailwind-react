@@ -35,7 +35,9 @@ const Index = () => {
         <FeaturesSection />
         <ProcessSection />
         <PossibilitiesSection />
-        <SparklesSection />
+        <div className="relative">
+          <SparklesSection />
+        </div>
       </div>
     </div>
   );

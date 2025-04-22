@@ -8,6 +8,16 @@ export function SparklesSection() {
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
   useEffect(() => {
+    // Remove any existing ElevenLabs widget from the document
+    const existingWidgets = document.querySelectorAll("elevenlabs-convai");
+    existingWidgets.forEach(widget => widget.remove());
+    
+    // Remove any existing script
+    const existingScript = document.getElementById("elevenlabs-widget-script-section");
+    if (existingScript) {
+      existingScript.remove();
+    }
+    
     // Only load the script when the component mounts
     if (sectionRef.current) {
       const script = document.createElement("script");
@@ -29,6 +39,10 @@ export function SparklesSection() {
         if (script && script.parentNode) {
           script.parentNode.removeChild(script);
         }
+        
+        // Also remove any widget that might have been created
+        const widgets = document.querySelectorAll("elevenlabs-convai");
+        widgets.forEach(widget => widget.remove());
       };
     }
   }, []);
@@ -38,9 +52,11 @@ export function SparklesSection() {
     if (scriptLoaded && widgetRef.current && !widgetRef.current.querySelector("elevenlabs-convai")) {
       const widget = document.createElement("elevenlabs-convai");
       widget.setAttribute("agent-id", "aGDIPWEQyXk5ZFnlOvI6");
+      widget.setAttribute("standalone", "true"); // Important! This prevents the widget from being floating
       widget.style.display = "block";
       widget.style.width = "340px";
       widget.style.margin = "0";
+      widget.style.position = "static"; // Ensure it's not positioned fixed
       widgetRef.current.appendChild(widget);
       
       // Cleanup function to remove the widget when component unmounts
