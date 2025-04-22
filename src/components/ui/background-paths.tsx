@@ -14,8 +14,8 @@ function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        color: `rgba(255,255,255,${0.2 + i * 0.02})`, // Увеличена яркость белого цвета
-        width: 1.2 + i * 0.08, // Увеличена толщина линий
+        color: `rgba(255,255,255,${0.4 + i * 0.02})`, // Much brighter white
+        width: 2 + i * 0.1, // Much thicker lines
     }));
 
     return (
@@ -24,23 +24,24 @@ function FloatingPaths({ position }: { position: number }) {
                 className="w-full h-full text-white"
                 viewBox="0 0 696 316"
                 fill="none"
+                style={{ filter: 'brightness(1.5)' }} // Increase brightness
             >
                 <title>Background Paths</title>
                 {paths.map((path) => (
                     <motion.path
-                        key={`path-${path.id}-${position}`}
+                        key={`path-${path.id}-${position}-${Math.random()}`} // Ensure unique keys
                         d={path.d}
                         stroke="currentColor"
                         strokeWidth={path.width}
-                        strokeOpacity={0.4 + path.id * 0.03} // Значительно увеличена прозрачность
-                        initial={{ pathLength: 0.3, opacity: 0.8 }}
+                        strokeOpacity={0.8} // Fixed high opacity
+                        initial={{ pathLength: 0.3, opacity: 1 }}
                         animate={{
                             pathLength: 1,
-                            opacity: [0.6, 0.9, 0.6], // Увеличен диапазон непрозрачности
+                            opacity: [0.7, 1, 0.7], // Higher opacity range
                             pathOffset: [0, 1, 0],
                         }}
                         transition={{
-                            duration: 20 + Math.random() * 10,
+                            duration: 15 + Math.random() * 10, // Slightly faster animation
                             repeat: Number.POSITIVE_INFINITY,
                             ease: "linear",
                         }}
@@ -53,8 +54,8 @@ function FloatingPaths({ position }: { position: number }) {
 
 export function SiteBackground() {
     return (
-        <div className="fixed inset-0 z-0 w-full h-full pointer-events-none overflow-hidden">
-            <div className="absolute inset-0 opacity-100"> {/* Изменена прозрачность до 100% */}
+        <div className="fixed inset-0 z-5 w-full h-full pointer-events-none overflow-hidden mix-blend-screen">
+            <div className="absolute inset-0 opacity-100">
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
             </div>
