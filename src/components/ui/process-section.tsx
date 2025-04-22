@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { ProcessSectionHeader } from "./ProcessSectionHeader";
@@ -50,16 +49,14 @@ export function ProcessSection() {
       <ProcessSectionHeader />
 
       {/* Desktop version */}
-      <div className="container mx-auto px-4 relative hidden lg:flex flex-row justify-center items-start z-10">
+      <div className="container mx-auto px-4 relative hidden lg:flex flex-row justify-center items-stretch z-10">
         <div className="flex flex-1 flex-col items-center justify-start">
           <ProcessGrid steps={steps} />
         </div>
-        {/* Правая колонка с выравниванием высоты */}
-        <div className="flex flex-col items-center justify-center pt-4 lg:ml-10 relative z-20 w-[290px] min-h-full h-full">
-          <div className="flex-grow flex flex-col items-center justify-between h-full min-h-[555px]">
-            <PhoneMockup desktop />
-            <ProcessFootnote />
-          </div>
+        {/* Right column with height matching */}
+        <div className="flex flex-col items-center justify-between pt-4 lg:ml-10 relative z-20 w-[290px]">
+          <PhoneMockup desktop />
+          <ProcessFootnote />
         </div>
       </div>
 
