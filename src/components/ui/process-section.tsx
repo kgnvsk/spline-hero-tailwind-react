@@ -1,7 +1,9 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { useId } from "react";
 import { Card } from "@/components/ui/card";
+import { SplineScene } from "@/components/ui/spline-scene";
 
 const steps = [
   {
@@ -94,64 +96,82 @@ export function ProcessSection() {
           AI Sales Manager інтегрується у ваші системи та працює на повну потужність
         </motion.p>
 
-        <div className="relative max-w-5xl mx-auto">
-          {/* Snake path */}
-          <div className="absolute hidden lg:block" style={{ left: '0', right: '0', top: '0', bottom: '0', zIndex: 0 }}>
-            {/* Horizontal paths */}
-            <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
-                 style={{ top: '10%', left: '0', width: '100%' }}></div>
-            <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
-                 style={{ top: '30%', left: '0', width: '100%' }}></div>
-            <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
-                 style={{ top: '50%', left: '0', width: '100%' }}></div>
-            <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
-                 style={{ top: '70%', left: '0', width: '100%' }}></div>
-            <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
-                 style={{ top: '90%', left: '0', width: '100%' }}></div>
-            
-            {/* Curved connections */}
-            <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500 rounded-r-full" 
-                 style={{ top: '10%', right: '0', height: '20%' }}></div>
-            <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500 rounded-l-full" 
-                 style={{ top: '30%', left: '0', height: '20%' }}></div>
-            <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500 rounded-r-full" 
-                 style={{ top: '50%', right: '0', height: '20%' }}></div>
-            <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500 rounded-l-full" 
-                 style={{ top: '70%', left: '0', height: '20%' }}></div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
+          {/* Process steps with snake path - Left column (2/3 width) */}
+          <div className="lg:col-span-2 relative">
+            {/* Snake path */}
+            <div className="absolute hidden lg:block" style={{ left: '0', right: '50%', top: '0', bottom: '0', zIndex: 0 }}>
+              {/* Horizontal lines */}
+              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                  style={{ top: '12%', left: '5%', width: '40%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
+                  style={{ top: '32%', left: '55%', width: '40%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                  style={{ top: '52%', left: '5%', width: '40%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
+                  style={{ top: '72%', left: '55%', width: '40%' }}></div>
+              <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                  style={{ top: '92%', left: '5%', width: '40%' }}></div>
+              
+              {/* Vertical connections */}
+              <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500" 
+                  style={{ top: '12%', left: '45%', height: '20%' }}></div>
+              <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500" 
+                  style={{ top: '32%', left: '55%', height: '20%' }}></div>
+              <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500" 
+                  style={{ top: '52%', left: '45%', height: '20%' }}></div>
+              <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500" 
+                  style={{ top: '72%', left: '55%', height: '20%' }}></div>
+            </div>
+
+            {/* Process steps */}
+            <div className="relative z-10">
+              {steps.map((step, index) => (
+                <motion.div
+                  key={step.title}
+                  variants={itemVariants}
+                  className="mb-12 last:mb-0"
+                  style={{
+                    width: '85%',
+                    marginLeft: index % 2 === 0 ? '0%' : '15%',
+                    marginRight: index % 2 === 0 ? '15%' : '0%'
+                  }}
+                >
+                  <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden relative">
+                    <Grid size={20} />
+                    <div className="relative z-20">
+                      <h3 className="text-lg font-bold text-white mb-4">
+                        {step.title}
+                      </h3>
+                      <ul className="text-neutral-400 space-y-2">
+                        {step.description.map((desc, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>{desc}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          {/* Process steps */}
-          <div className="relative z-10">
-            {steps.map((step, index) => (
-              <motion.div
-                key={step.title}
-                variants={itemVariants}
-                className={`relative mb-16 last:mb-0 ${
-                  index % 2 === 0 ? 'lg:ml-0 lg:mr-[50%]' : 'lg:ml-[50%] lg:mr-0'
-                }`}
-                style={{
-                  width: '45%',
-                  marginTop: index === 0 ? '0' : '40px'
-                }}
-              >
-                <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden relative">
-                  <Grid size={20} />
-                  <div className="relative z-20">
-                    <h3 className="text-lg font-bold text-white mb-4">
-                      {step.title}
-                    </h3>
-                    <ul className="text-neutral-400 space-y-2">
-                      {step.description.map((desc, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
-                          <span>{desc}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          {/* Video/Spline component - Right column (1/3 width) */}
+          <div className="lg:col-span-1 relative h-[500px] lg:h-auto">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
+              className="w-full h-full"
+            >
+              <SplineScene 
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="w-full h-full"
+              />
+            </motion.div>
           </div>
         </div>
       </motion.div>
