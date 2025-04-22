@@ -2,24 +2,31 @@
 'use client'
 
 import { Suspense, lazy, useState, useEffect } from 'react'
-const Spline = lazy(() => {
-  return new Promise((resolve) => {
+
+// Correctly type the lazy-loaded component
+const Spline = lazy(() => 
+  new Promise<{ default: React.ComponentType<any> }>((resolve) => {
     // Add a small delay to ensure the import is properly initialized
     setTimeout(() => {
       import('@splinetool/react-spline')
-        .then(module => resolve(module))
+        .then(module => {
+          // Correctly resolve the module with proper typing
+          resolve({ default: module.default });
+        })
         .catch(err => {
           console.error('Failed to load Spline module:', err);
           // Return a fallback component when Spline fails to load
-          resolve({ default: () => (
-            <div className="w-full h-full flex items-center justify-center bg-black/40 rounded-lg">
-              <p className="text-white text-opacity-70">3D scene unavailable</p>
-            </div>
-          )});
+          resolve({ 
+            default: () => (
+              <div className="w-full h-full flex items-center justify-center bg-black/40 rounded-lg">
+                <p className="text-white text-opacity-70">3D scene unavailable</p>
+              </div>
+            )
+          });
         });
     }, 100);
-  });
-});
+  })
+);
 
 interface SplineSceneProps {
   scene: string
