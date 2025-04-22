@@ -29,7 +29,9 @@ export function FeatureCard({ icon: Icon, title, items }: FeatureCardProps) {
         <h3 className="text-lg font-extrabold text-white mb-4 font-russo">
           {title}
         </h3>
-        <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo mt-auto">
+        {/* Using flex-grow to push the bullet points to align with the first card */}
+        <div className="flex-grow"></div>
+        <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo">
           {items.map((item, index) => (
             <li key={index} className="flex items-center">
               <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0"></span>
