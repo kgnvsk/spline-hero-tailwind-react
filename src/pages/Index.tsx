@@ -10,9 +10,9 @@ import { Spotlight } from "@/components/ui/spotlight";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Фиксированный фон grid */}
-      <div className="fixed inset-0 z-0 w-full h-full pointer-events-none select-none">
+    <div className="min-h-screen bg-black relative">
+      {/* Fixed background grid with absolute positioning to cover the entire viewport */}
+      <div className="fixed inset-0 z-0 w-full h-full">
         <Squares
           direction="diagonal"
           speed={0.5}
@@ -22,10 +22,12 @@ const Index = () => {
           className="w-full h-full"
         />
       </div>
-      {/* Spotlight поверх grid если нужно (оставляем) */}
-      <Spotlight className="z-20" />
-      {/* Основной контент поверх зафиксированного фона */}
-      <div className="relative z-30 min-h-screen">
+      
+      {/* Spotlight layer */}
+      <Spotlight className="z-10" />
+      
+      {/* Content layer with higher z-index to appear above the grid */}
+      <div className="relative z-20 min-h-screen">
         <SplineSceneBasic />
         <Hero />
         <BenefitsSection />
