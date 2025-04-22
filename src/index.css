@@ -123,7 +123,8 @@
   }
 
   body {
-    @apply bg-black text-foreground font-manrope;
+    @apply bg-black text-foreground;
+    font-family: 'Russo One', system-ui, sans-serif !important;
   }
 }
 
