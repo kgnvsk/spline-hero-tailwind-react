@@ -55,6 +55,7 @@ function Hero() {
               shimmerColor="#fff"
               background="rgba(0,0,0,1)"
               className="text-white dark:text-white font-russo"
+              onClick={() => window.open("https://t.me/vitalii_2get", "_blank")}
             >
               Написати нам <PhoneCall className="w-4 h-4" />
             </ShimmerButton>
@@ -62,6 +63,7 @@ function Hero() {
               shimmerColor="#000"
               background="#fff"
               className="text-black font-russo"
+              onClick={() => window.open("https://t.me/vitalii_2get", "_blank")}
             >
               Отримати демо <MoveRight className="w-4 h-4" />
             </ShimmerButton>
