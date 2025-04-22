@@ -2,6 +2,7 @@
 import { SplineSceneBasic } from "@/components/SplineHero";
 import { Hero } from "@/components/ui/animated-hero";
 import { FeaturesSection } from "@/components/ui/features-section";
+import { ProcessSection } from "@/components/ui/process-section";
 
 const Index = () => {
   return (
@@ -9,6 +10,7 @@ const Index = () => {
       <SplineSceneBasic />
       <Hero />
       <FeaturesSection />
+      <ProcessSection />
     </div>
   );
 };
