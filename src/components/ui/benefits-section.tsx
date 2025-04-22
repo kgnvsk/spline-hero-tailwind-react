@@ -48,7 +48,7 @@ export function BenefitsSection() {
   };
 
   return (
-    <section className="py-14 lg:py-20 relative">
+    <section className="py-14 lg:py-20 relative z-10">
       <motion.h2
         initial={{ opacity: 0, y: -16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export function BenefitsSection() {
           <motion.div
             key={title}
             variants={itemVariants}
-            className="relative bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 p-7 rounded-3xl overflow-hidden shadow-lg"
+            className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-7 rounded-3xl overflow-hidden shadow-lg backdrop-blur-sm"
           >
             <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/20 mb-6">
               <Icon className="w-7 h-7 text-primary" />

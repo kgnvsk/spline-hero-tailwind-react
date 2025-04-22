@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Zap, Globe, Workflow, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
@@ -53,7 +52,7 @@ export function PossibilitiesSection() {
   };
 
   return (
-    <section className="py-16 lg:py-24 relative overflow-hidden">
+    <section className="py-16 lg:py-24 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +79,7 @@ export function PossibilitiesSection() {
           <motion.div
             key={item.title}
             variants={itemVariants}
-            className="relative bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 p-6 rounded-3xl overflow-hidden"
+            className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-6 rounded-3xl overflow-hidden backdrop-blur-sm"
           >
             <Grid size={20} />
             <div className="relative z-20">
@@ -97,7 +96,6 @@ export function PossibilitiesSection() {
   );
 }
 
-// Reusing the Grid component from features-section.tsx
 const Grid = ({
   pattern,
   size,

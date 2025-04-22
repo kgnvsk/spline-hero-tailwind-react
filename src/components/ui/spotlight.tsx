@@ -15,7 +15,7 @@ export function Spotlight({
 }: SpotlightProps) {
   const divRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [opacity, setOpacity] = useState(0.5) // Увеличиваем начальную непрозрачность
+  const [opacity, setOpacity] = useState(0.5)
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -33,11 +33,11 @@ export function Spotlight({
     }
 
     const handleMouseEnter = () => {
-      setOpacity(0.8) // Увеличиваем яркость при наведении
+      setOpacity(0.8)
     }
 
     const handleMouseLeave = () => {
-      setOpacity(0.5) // Менее прозрачный при отведении курсора
+      setOpacity(0.5)
     }
 
     const element = divRef.current
@@ -59,7 +59,7 @@ export function Spotlight({
   return (
     <div
       className={cn(
-        'pointer-events-none fixed inset-0 z-10 transition duration-300',
+        'pointer-events-none fixed inset-0 z-5 transition duration-300',
         className
       )}
       style={{ opacity: isClient ? opacity : 0 }}

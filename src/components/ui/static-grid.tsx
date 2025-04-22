@@ -15,7 +15,7 @@ export const StaticGrid: React.FC<StaticGridProps> = ({
   size = 40,
 }) => {
   const gridStyle: React.CSSProperties = {
-    position: "absolute", 
+    position: "fixed", // Changed from absolute to fixed to ensure it covers the entire viewport
     top: 0,
     left: 0,
     right: 0,
@@ -31,7 +31,7 @@ export const StaticGrid: React.FC<StaticGridProps> = ({
     opacity: opacity,
     pointerEvents: "none", 
     userSelect: "none",
-    zIndex: 0,
+    zIndex: 1, // Increase z-index slightly but still behind content
   };
 
   return <div className={className} style={gridStyle} />;

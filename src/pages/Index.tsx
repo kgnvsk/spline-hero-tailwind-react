@@ -10,28 +10,25 @@ import StaticGrid from "@/components/ui/static-grid";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Static grid as the bottom layer with higher opacity */}
+    <div className="relative min-h-screen">
+      {/* Static grid as a fixed background */}
       <StaticGrid 
         color="#6b6b6b" 
         size={48} 
-        opacity={0.6} 
-        className="absolute inset-0 z-0"
+        opacity={0.4} 
       />
       
-      {/* Content layer */}
+      {/* Content layer with higher z-index */}
       <div className="relative z-10 min-h-screen">
         {/* Spotlight effect */}
         <Spotlight className="pointer-events-none" />
         
-        <div className="relative min-h-screen">
-          <SplineSceneBasic />
-          <Hero />
-          <BenefitsSection />
-          <FeaturesSection />
-          <ProcessSection />
-          <PossibilitiesSection />
-        </div>
+        <SplineSceneBasic />
+        <Hero />
+        <BenefitsSection />
+        <FeaturesSection />
+        <ProcessSection />
+        <PossibilitiesSection />
       </div>
     </div>
   );
