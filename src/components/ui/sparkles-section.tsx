@@ -1,53 +1,59 @@
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 
 export function SparklesSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const widgetRef = useRef<HTMLDivElement | null>(null);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   useEffect(() => {
-    // Only create the script when the component mounts
-    const script = document.createElement("script");
-    script.id = "elevenlabs-widget-script-section";
-    script.src = "https://elevenlabs.io/convai-widget/index.js";
-    script.async = true;
-    script.type = "text/javascript";
-    
-    // Only append to the current section container instead of document.body
+    // Only load the script when the component mounts
     if (sectionRef.current) {
+      const script = document.createElement("script");
+      script.id = "elevenlabs-widget-script-section";
+      script.src = "https://elevenlabs.io/convai-widget/index.js";
+      script.async = true;
+      script.type = "text/javascript";
+      
+      // Set the script as loaded when it's ready
+      script.onload = () => {
+        setScriptLoaded(true);
+      };
+      
+      // Append script to the section container
       sectionRef.current.appendChild(script);
+      
+      // Cleanup function to remove the script when component unmounts
+      return () => {
+        if (script && script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      };
     }
-
-    // Cleanup function to remove the script when component unmounts
-    return () => {
-      if (sectionRef.current && script.parentNode) {
-        sectionRef.current.removeChild(script);
-      }
-    };
   }, []);
 
   useEffect(() => {
-    // Create widget only when widgetRef is available
-    if (widgetRef.current && !widgetRef.current.querySelector("elevenlabs-convai")) {
+    // Only create the widget when script is loaded and widgetRef is available
+    if (scriptLoaded && widgetRef.current && !widgetRef.current.querySelector("elevenlabs-convai")) {
       const widget = document.createElement("elevenlabs-convai");
       widget.setAttribute("agent-id", "aGDIPWEQyXk5ZFnlOvI6");
       widget.style.display = "block";
       widget.style.width = "340px";
       widget.style.margin = "0";
       widgetRef.current.appendChild(widget);
-    }
-
-    // Cleanup function to remove the widget when component unmounts
-    return () => {
-      if (widgetRef.current) {
-        const widget = widgetRef.current.querySelector("elevenlabs-convai");
-        if (widget) {
-          widgetRef.current.removeChild(widget);
+      
+      // Cleanup function to remove the widget when component unmounts
+      return () => {
+        if (widgetRef.current) {
+          const existingWidget = widgetRef.current.querySelector("elevenlabs-convai");
+          if (existingWidget) {
+            widgetRef.current.removeChild(existingWidget);
+          }
         }
-      }
-    };
-  }, []);
+      };
+    }
+  }, [scriptLoaded]);
 
   return (
     <div 
@@ -77,6 +83,7 @@ export function SparklesSection() {
         {/* Radial Gradient to prevent sharp edges */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
+      
       {/* Widget container - positioned at bottom right of this section only */}
       <div
         ref={widgetRef}
