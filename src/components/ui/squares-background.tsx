@@ -144,12 +144,10 @@ export function Squares({
       setHoveredSquare(null)
     }
 
-    // Event listeners
     canvas.addEventListener("mousemove", handleMouseMove)
     canvas.addEventListener("mouseleave", handleMouseLeave)
 
     // Initial setup
-    resizeCanvas()
     requestRef.current = requestAnimationFrame(updateAnimation)
 
     // Cleanup
@@ -163,11 +161,13 @@ export function Squares({
     }
   }, [direction, speed, borderColor, hoverFillColor, hoveredSquare, squareSize])
 
+  console.log("Hover state:", hoveredSquare) // Debugging
+
   return (
     <canvas
       ref={canvasRef}
-      className={`w-full h-full border-none block ${className ?? ""}`}
-      style={{ display: "block" }}
+      className={`w-full h-full border-none ${className ?? ""}`}
+      style={{ display: "block", position: "absolute", top: 0, left: 0, pointerEvents: "auto", zIndex: 10 }}
     />
   )
 }
