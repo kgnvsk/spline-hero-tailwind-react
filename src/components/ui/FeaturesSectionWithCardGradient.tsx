@@ -128,9 +128,9 @@ export function FeaturesSectionWithCardGradient() {
               </div>
               <div className="relative z-10 flex flex-col h-full">
                 <h3 className="text-lg font-extrabold text-slate-900 dark:text-white mb-4">{feature.title}</h3>
-                <ul className="text-neutral-600 dark:text-neutral-300 space-y-2 text-base pl-0 list-disc ml-4">
+                <ul className="text-neutral-600 dark:text-neutral-300 space-y-3 text-base pl-0 list-disc ml-4">
                   {feature.items.map((item, idx) => (
-                    <li key={idx} className="leading-snug">
+                    <li key={idx} className="leading-snug text-[15px]">
                       {item}
                     </li>
                   ))}
