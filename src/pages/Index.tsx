@@ -1,5 +1,5 @@
 
-import { SplineSceneBasic } from "@/components/ui/spline-scene";
+import { SplineSceneBasic } from "@/components/SplineHero";
 import { Hero } from "@/components/ui/animated-hero";
 import { BenefitsSection } from "@/components/ui/benefits-section";
 import { FeaturesSection } from "@/components/ui/features-section";
