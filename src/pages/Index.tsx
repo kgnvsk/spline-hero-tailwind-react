@@ -21,7 +21,7 @@ const Index = () => {
       />
       
       {/* Content layer */}
-      <div className="relative z-20 min-h-screen">
+      <div className="relative z-10 min-h-screen">
         {/* Spotlight effect */}
         <Spotlight className="pointer-events-none" />
         
