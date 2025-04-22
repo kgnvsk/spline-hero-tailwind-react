@@ -32,24 +32,24 @@ function Hero() {
   return (
     <div className="w-full text-white relative z-10">
       <div className="container mx-auto px-4">
-        <div className="flex gap-6 py-8 lg:py-20 items-center justify-center flex-col">
-          <div className="flex gap-3 flex-col text-center">
-            <h1 className="text-2xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
-              <span className="text-2xl md:text-5xl block mb-2 font-russo text-neutral-400 tracking-wide">
+        <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
+          <div className="flex gap-4 flex-col">
+            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
+              <span className="text-3xl md:text-4xl block mb-4 font-russo text-neutral-400 tracking-wide">
                 АІ менеджер це:
               </span>
-              <span className="relative flex w-full justify-center overflow-visible h-20 md:h-28">
+              <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
                 &nbsp;
                 {titles.map((title, idx) => (
                   <motion.span
                     key={idx}
-                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-2xl md:text-4xl" // Further increased text size
+                    className="absolute font-semibold whitespace-nowrap font-russo heading-white"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
                       titleNumber === idx
                         ? { y: 0, opacity: 1 }
-                        : { y: titleNumber > idx ? -100 : 100, opacity: 0 }
+                        : { y: titleNumber > idx ? -150 : 150, opacity: 0 }
                     }
                   >
                     {title}
@@ -58,22 +58,22 @@ function Hero() {
               </span>
             </h1>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md justify-center">
+          <div className="flex flex-row gap-3">
             <ShimmerButton
               shimmerColor="#fff"
               background="rgba(0,0,0,1)"
-              className="text-white dark:text-white font-russo text-xs md:text-sm w-full sm:w-auto"
+              className="text-white dark:text-white font-russo"
               onClick={() => handleTelegramClick("Написати нам")}
             >
-              Написати нам <PhoneCall className="w-3 h-3 ml-1" />
+              Написати нам <PhoneCall className="w-4 h-4" />
             </ShimmerButton>
             <ShimmerButton
               shimmerColor="#000"
               background="#fff"
-              className="text-black font-russo text-xs md:text-sm w-full sm:w-auto"
+              className="text-black font-russo"
               onClick={() => handleTelegramClick("Отримати демо")}
             >
-              Отримати демо <MoveRight className="w-3 h-3 ml-1" />
+              Отримати демо <MoveRight className="w-4 h-4" />
             </ShimmerButton>
           </div>
         </div>
