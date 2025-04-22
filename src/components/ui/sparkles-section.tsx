@@ -23,16 +23,15 @@ export function SparklesSection() {
     if (widgetRef.current && !widgetRef.current.querySelector("elevenlabs-convai")) {
       const widget = document.createElement("elevenlabs-convai");
       widget.setAttribute("agent-id", "aGDIPWEQyXk5ZFnlOvI6");
-      // Можно добавить стили, чтобы он всегда был прижат к нижу секции
       widget.style.display = "block";
       widget.style.width = "340px";
-      widget.style.margin = "0 auto";
+      widget.style.margin = "0";
       widgetRef.current.appendChild(widget);
     }
   }, []);
 
   return (
-    <div className="relative h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4">
+    <div className="relative h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4 pb-28">
       <h1 className="md:text-lg text-xs lg:text-xl font-bold text-center text-white relative z-20">
         Є питання? Задай нашому голосовому АІ асистенту
       </h1>
@@ -56,10 +55,10 @@ export function SparklesSection() {
         {/* Radial Gradient to prevent sharp edges */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
-      {/* Контейнер для виджета - всегда прижат к низу этой секции */}
+      {/* Контейнер для виджета - закреплён внизу справа внутри секции */}
       <div
         ref={widgetRef}
-        className="absolute left-1/2 -translate-x-1/2 bottom-2 z-50"
+        className="absolute right-4 bottom-4 z-50"
         style={{ pointerEvents: "auto" }}
       />
     </div>
