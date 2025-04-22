@@ -102,10 +102,19 @@ export function PossibilitiesSection() {
             />
             <Grid size={20} />
             <div className="relative z-20 flex flex-col h-full">
-              <item.icon className="w-8 h-8 text-white mb-4" />
-              <p className="text-lg font-extrabold mb-4 font-russo text-white">{item.title}</p>
+              <div>
+                <item.icon className="w-8 h-8 text-white mb-4" />
+              </div>
+              <h3 className="text-lg font-extrabold mb-6 font-russo text-white">{item.title}</h3>
               <div className="flex-1"></div>
-              <p className="text-neutral-400 text-sm font-russo mt-auto">{item.description}</p>
+              <ul className="text-neutral-400 text-sm font-russo space-y-3 pl-0 list-none mt-auto">
+                {item.description.map((desc, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0 mt-1.5"></span>
+                    <span>{desc}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </motion.div>
         ))}

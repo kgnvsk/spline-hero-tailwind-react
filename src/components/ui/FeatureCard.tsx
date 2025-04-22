@@ -24,11 +24,11 @@ export function FeatureCard({ icon: Icon, title, items }: FeatureCardProps) {
       <GridPatternBackground size={20} />
       
       <div className="relative z-20 flex flex-col h-full">
-        <div className="mb-4">
-          <Icon className="w-8 h-8 text-white" />
+        <div>
+          <Icon className="w-8 h-8 text-white mb-4" />
         </div>
         
-        <h3 className="text-lg font-extrabold text-white mb-4 font-russo">
+        <h3 className="text-lg font-extrabold text-white mb-6 font-russo">
           {title}
         </h3>
         
