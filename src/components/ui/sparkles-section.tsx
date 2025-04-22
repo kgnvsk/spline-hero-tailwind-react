@@ -3,27 +3,32 @@ import React, { useEffect, useRef } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 
 export function SparklesSection() {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
   const widgetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // Script should only be added once
-    if (!document.getElementById("elevenlabs-widget-script")) {
-      const script = document.createElement("script");
-      script.id = "elevenlabs-widget-script";
-      script.src = "https://elevenlabs.io/convai-widget/index.js";
-      script.async = true;
-      script.type = "text/javascript";
-      document.body.appendChild(script);
+    // Only create the script when the component mounts
+    const script = document.createElement("script");
+    script.id = "elevenlabs-widget-script-section";
+    script.src = "https://elevenlabs.io/convai-widget/index.js";
+    script.async = true;
+    script.type = "text/javascript";
+    
+    // Only append to the current section container instead of document.body
+    if (sectionRef.current) {
+      sectionRef.current.appendChild(script);
     }
 
-    // Return cleanup function to remove the script when component unmounts
+    // Cleanup function to remove the script when component unmounts
     return () => {
-      // We don't remove the script to avoid affecting other potential instances
+      if (sectionRef.current && script.parentNode) {
+        sectionRef.current.removeChild(script);
+      }
     };
   }, []);
 
   useEffect(() => {
-    // Create widget only when widgetRef is available and doesn't already have the widget
+    // Create widget only when widgetRef is available
     if (widgetRef.current && !widgetRef.current.querySelector("elevenlabs-convai")) {
       const widget = document.createElement("elevenlabs-convai");
       widget.setAttribute("agent-id", "aGDIPWEQyXk5ZFnlOvI6");
@@ -45,7 +50,10 @@ export function SparklesSection() {
   }, []);
 
   return (
-    <div className="relative h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4 pb-36">
+    <div 
+      ref={sectionRef} 
+      className="relative h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4 pb-36"
+    >
       <h1 className="md:text-lg text-xs lg:text-xl font-bold text-center text-white relative z-20">
         Є питання? Задай нашому голосовому АІ асистенту
       </h1>
@@ -69,7 +77,7 @@ export function SparklesSection() {
         {/* Radial Gradient to prevent sharp edges */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
-      {/* Контейнер для виджета - справа внизу секции */}
+      {/* Widget container - positioned at bottom right of this section only */}
       <div
         ref={widgetRef}
         className="absolute right-4 bottom-4 z-50"
