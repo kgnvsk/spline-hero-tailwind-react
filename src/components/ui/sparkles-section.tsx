@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 
@@ -54,10 +53,10 @@ export function SparklesSection() {
         {/* Radial Gradient to prevent sharp edges */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
-      {/* Контейнер для виджета - по центру внизу секции */}
+      {/* Контейнер для виджета - справа внизу секции */}
       <div
         ref={widgetRef}
-        className="absolute inset-x-0 bottom-4 flex justify-center z-50"
+        className="absolute right-4 bottom-4 z-50"
         style={{ pointerEvents: "auto" }}
       />
     </div>
