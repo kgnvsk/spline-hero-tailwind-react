@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -28,7 +27,7 @@ function FloatingPaths({ position }: { position: number }) {
                 <title>Background Paths</title>
                 {paths.map((path) => (
                     <motion.path
-                        key={path.id}
+                        key={`path-${path.id}-${position}`}
                         d={path.d}
                         stroke="currentColor"
                         strokeWidth={path.width}
@@ -51,11 +50,10 @@ function FloatingPaths({ position }: { position: number }) {
     );
 }
 
-// Компонент фонового слоя без внутренней надписи/кнопки
 export function SiteBackground() {
     return (
         <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none overflow-hidden">
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 opacity-50">
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
             </div>
