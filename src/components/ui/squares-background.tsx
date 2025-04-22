@@ -145,7 +145,6 @@ export function Squares({
     }
 
     // Event listeners
-    window.addEventListener("resize", resizeCanvas)
     canvas.addEventListener("mousemove", handleMouseMove)
     canvas.addEventListener("mouseleave", handleMouseLeave)
 
