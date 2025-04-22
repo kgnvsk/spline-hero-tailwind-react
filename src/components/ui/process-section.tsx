@@ -96,12 +96,21 @@ export function ProcessSection() {
         </motion.p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-12">
+          <div className="space-y-12 relative">
+            {/* Snake path */}
+            <div className="absolute hidden lg:block left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500">
+              {/* Horizontal lines for the snake path */}
+              <div className="absolute top-[15%] h-1 w-36 bg-gradient-to-r from-purple-500 to-blue-500 left-0"></div>
+              <div className="absolute top-[42%] h-1 w-36 bg-gradient-to-r from-blue-500 to-purple-500 right-0"></div>
+              <div className="absolute top-[69%] h-1 w-36 bg-gradient-to-r from-purple-500 to-blue-500 left-0"></div>
+            </div>
+            
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
                 variants={itemVariants}
-                className="relative"
+                className={`relative ${index % 2 === 1 ? 'lg:ml-auto' : ''}`}
+                style={{ width: 'calc(100% - 50px)' }}
               >
                 <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden relative">
                   {/* Add Grid pattern similar to features section */}
@@ -120,9 +129,6 @@ export function ProcessSection() {
                     </ul>
                   </div>
                 </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute h-12 w-1 bg-gradient-to-b from-purple-500 to-blue-500 left-1/2 -bottom-12 transform -translate-x-1/2" />
-                )}
               </motion.div>
             ))}
           </div>
@@ -139,18 +145,20 @@ export function ProcessSection() {
                 <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-20 h-2 bg-neutral-800 rounded-full"></div>
               </div>
               <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] bg-neutral-900">
-                {/* Fix the video embed */}
+                {/* Fixed video embed */}
                 <div className="w-full h-full">
-                  <script src="https://fast.wistia.com/embed/medias/xcdo71c2zz.jsonp" async></script>
-                  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-                  <div className="wistia_responsive_padding" style={{padding:"188.89% 0 0 0", position:"relative"}}>
-                    <div className="wistia_responsive_wrapper" style={{height:"100%", left:0, position:"absolute", top:0, width:"100%"}}>
-                      <div className="wistia_embed wistia_async_xcdo71c2zz videoFoam=true" style={{height:"100%", position:"relative", width:"100%"}}>
-                        <div className="wistia_swatch" style={{height:"100%", left:0, opacity:0, overflow:"hidden", position:"absolute", top:0, transition:"opacity 200ms", width:"100%"}}>
-                          <img src="https://fast.wistia.com/embed/medias/xcdo71c2zz/swatch" style={{filter:"blur(5px)", height:"100%", objectFit:"contain", width:"100%"}} alt="" aria-hidden="true" />
-                        </div>
-                      </div>
-                    </div>
+                  <div style={{padding:"0", position:"relative", height: "100%", width: "100%"}}>
+                    <iframe src="https://fast.wistia.net/embed/iframe/xcdo71c2zz" 
+                      title="AI Sales Manager Demo" 
+                      allow="autoplay; fullscreen" 
+                      allowTransparency={true} 
+                      frameBorder="0" 
+                      scrolling="no" 
+                      className="wistia_embed" 
+                      name="wistia_embed" 
+                      width="100%" 
+                      height="100%">
+                    </iframe>
                   </div>
                 </div>
               </div>
