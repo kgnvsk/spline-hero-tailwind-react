@@ -24,7 +24,7 @@ const Index = () => {
         squareSize={40}
         borderColor="#6b6b6b"
         hoverFillColor="#333333"
-        className="z-10 fixed top-0 left-0 w-full h-full pointer-events-none"
+        className="z-10 fixed top-0 left-0 w-full h-full"
       />
       {/* Если нужно, можете вернуть StaticGrid вместо (или вместе с) Squares ниже */}
       {/*
