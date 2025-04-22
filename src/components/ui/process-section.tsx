@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ProcessSectionHeader } from "./ProcessSectionHeader";
 import { ProcessGrid } from "./ProcessGrid";
 import { PhoneMockup } from "./PhoneMockup";
-import { ZigzagConnector } from "./ZigzagConnector";
 import { ProcessFootnote } from "./ProcessFootnote";
 
 const steps = [
@@ -55,9 +54,12 @@ export function ProcessSection() {
         <div className="flex flex-1 flex-col items-center justify-start">
           <ProcessGrid steps={steps} />
         </div>
-        <div className="w-[290px] flex flex-col items-center justify-start pt-4 lg:ml-10 relative z-20">
-          <PhoneMockup desktop />
-          <ProcessFootnote />
+        {/* Правая колонка с выравниванием высоты */}
+        <div className="flex flex-col items-center justify-center pt-4 lg:ml-10 relative z-20 w-[290px] min-h-full h-full">
+          <div className="flex-grow flex flex-col items-center justify-between h-full min-h-[555px]">
+            <PhoneMockup desktop />
+            <ProcessFootnote />
+          </div>
         </div>
       </div>
 

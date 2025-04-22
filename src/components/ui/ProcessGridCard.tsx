@@ -14,20 +14,22 @@ export const ProcessGridCard: React.FC<ProcessGridCardProps> = ({
 }) => {
   return (
     <div
-      className={`relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden min-h-[180px] flex flex-col justify-between ${className}`}
+      className={`relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden min-h-[240px] flex flex-col justify-between items-stretch ${className}`}
     >
       <ProcessCardGridGraphic size={20} />
-      <p className="text-base font-bold text-neutral-800 dark:text-white relative z-20 mb-4">
-        {title}
-      </p>
-      <ul className="text-neutral-600 dark:text-neutral-400  relative z-20 text-sm pl-0 list-none space-y-2">
-        {description.map((item, i) => (
-          <li key={i} className="flex items-start">
-            <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="flex-1 flex flex-col justify-between z-20 relative">
+        <p className="text-base font-bold text-neutral-800 dark:text-white mb-4 flex-shrink-0">
+          {title}
+        </p>
+        <ul className="text-neutral-600 dark:text-neutral-400 relative text-sm pl-0 list-none space-y-2 flex-1 flex flex-col justify-end">
+          {description.map((item, i) => (
+            <li key={i} className="flex items-start">
+              <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
