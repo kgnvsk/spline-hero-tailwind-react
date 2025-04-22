@@ -27,14 +27,14 @@ function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center">
-              <span className="text-3xl md:text-4xl block mb-4">АІ менеджер це:</span>
+            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-playfair heading-gradient heading-shadow">
+              <span className="text-3xl md:text-4xl block mb-4 font-playfair">АІ менеджер це:</span>
               <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold whitespace-nowrap"
+                    className="absolute font-semibold whitespace-nowrap font-playfair"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={

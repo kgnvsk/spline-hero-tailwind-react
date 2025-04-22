@@ -9,7 +9,7 @@ export const ProcessSectionHeader = () => (
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="text-3xl md:text-4xl font-bold text-center text-white mb-2"
+      className="text-3xl md:text-4xl font-bold text-center font-playfair heading-gradient heading-shadow mb-2"
     >
       Як працює AI Sales Manager
     </motion.h2>
