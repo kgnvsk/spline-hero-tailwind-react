@@ -55,7 +55,7 @@ export function ProcessSection() {
           <ProcessGrid steps={steps} />
         </div>
         {/* Right column with phone mockup */}
-        <div className="w-[290px] flex flex-col justify-between h-full" style={{ minHeight: '580px' }}>
+        <div className="w-[290px] flex flex-col justify-between h-full" style={{ minHeight: '590px' }}>
           <div className="flex-1 flex items-center justify-center">
             <PhoneMockup desktop />
           </div>
