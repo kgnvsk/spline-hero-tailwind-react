@@ -68,11 +68,11 @@ export function FeaturesSection() {
               <p className="text-lg font-extrabold text-white mb-4 font-russo">
                 {feature.title}
               </p>
-              <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo">
+              <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo flex flex-col">
                 {feature.items.map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>{item}</span>
+                  <li key={index} className="flex items-center">
+                    <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0"></span>
+                    <span className="leading-snug">{item}</span>
                   </li>
                 ))}
               </ul>
