@@ -35,15 +35,15 @@ function Hero() {
         <div className="flex gap-6 py-8 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-3 flex-col text-center">
             <h1 className="text-2xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
-              <span className="text-xl md:text-4xl block mb-2 font-russo text-neutral-400 tracking-wide">
+              <span className="text-2xl md:text-5xl block mb-2 font-russo text-neutral-400 tracking-wide">
                 АІ менеджер це:
               </span>
-              <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
+              <span className="relative flex w-full justify-center overflow-visible h-20 md:h-28">
                 &nbsp;
                 {titles.map((title, idx) => (
                   <motion.span
                     key={idx}
-                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-xl md:text-3xl" // Increased text size further
+                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-2xl md:text-4xl" // Further increased text size
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
