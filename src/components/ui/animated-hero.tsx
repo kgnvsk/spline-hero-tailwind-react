@@ -38,12 +38,12 @@ function Hero() {
               <span className="text-xl md:text-4xl block mb-2 font-russo text-neutral-400 tracking-wide">
                 АІ менеджер це:
               </span>
-              <span className="relative flex w-full justify-center overflow-visible h-10 md:h-24">
+              <span className="relative flex w-full justify-center overflow-visible h-12 md:h-24">
                 &nbsp;
                 {titles.map((title, idx) => (
                   <motion.span
                     key={idx}
-                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-xs md:text-base"
+                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-base md:text-2xl" // Increased text size
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
