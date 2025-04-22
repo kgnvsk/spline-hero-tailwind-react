@@ -40,38 +40,37 @@ const steps = [
   }
 ];
 
-// Функция для определения смещения для змейки
-function getStepTranslate(idx: number) {
-  // Чётные блоки вправо, нечётные влево — смещение для линии
-  return idx % 2 === 0 ? "translate-x-0" : "translate-x-[40px]";
+// Функция для определения смещения для зигзага
+function getStepTransform(idx: number) {
+  // Нечетные блоки смещаем вправо на 100px (для создания зигзага)
+  return idx % 2 === 0 ? "translate-x-0" : "translate-x-[100px]";
 }
 
-// Функция SVG-линии для змейки (вертикальная с отводом)
+// SVG-линия для соединения блоков в зигзаг
 function SnakeLine({ index }: { index: number }) {
   // Для последнего элемента линии не рисуем
   if (index === steps.length - 1) return null;
 
-  // Ломаная линия SVG: вертикаль - горизонталь - вертикаль
-  // В зависимости от чётности шагов линия уходит вправо или влево
-  const isOdd = index % 2 !== 0;
+  // Определяем тип линии в зависимости от четности шага
+  const isEven = index % 2 === 0;
+  
   return (
     <svg
-      className={`absolute left-1/2 top-full z-0 ${isOdd ? "translate-x-[40px]" : "-translate-x-[40px]"}`}
-      width="80"
-      height="70"
-      fill="none"
-      style={{ stroke: "#fff" }}
+      className="absolute w-[100px] h-[70px] overflow-visible z-0"
+      style={{
+        left: isEven ? "27px" : "127px", // Позиционирование линии в зависимости от блока
+        top: "100%",
+        stroke: "#333",
+        strokeWidth: 2
+      }}
     >
-      <polyline
-        points={
-          isOdd
-            // от центра вниз, потом вправо, потом снова вниз
-            ? "0,0 0,35 80,35 80,70"
-            // от центра вниз, потом влево, потом снова вниз
-            : "80,0 80,35 0,35 0,70"
+      <path
+        d={isEven
+          ? "M0,0 L0,35 L100,35 L100,70" // от левого блока к правому
+          : "M0,0 L0,35 L-100,35 L-100,70" // от правого блока к левому
         }
-        stroke="#fff"
-        strokeWidth="2"
+        fill="none"
+        stroke="#333"
       />
     </svg>
   );
@@ -79,8 +78,8 @@ function SnakeLine({ index }: { index: number }) {
 
 export function ProcessSection() {
   return (
-    <div className="py-20 bg-black relative overflow-x-hidden">
-      {/* Section title, описание - переместили вверх */}
+    <div className="py-20 bg-black relative overflow-hidden">
+      {/* Заголовок и описание секции */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -95,55 +94,53 @@ export function ProcessSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-        className="text-center text-neutral-400 mb-16 max-w-2xl mx-auto"
+        className="text-center text-neutral-400 mb-16 max-w-2xl mx-auto px-4"
       >
         AI Sales Manager інтегрується у ваші системи та працює на повну потужність
       </motion.p>
       
-      <div className="container mx-auto flex flex-col lg:flex-row gap-8 px-6">
-        {/* Левая часть: змейка и блоки */}
-        <div className="relative flex-1 flex justify-end">
-          <div className="relative w-full max-w-[430px] z-10">
+      {/* Основной контент */}
+      <div className="container mx-auto flex flex-col lg:flex-row justify-center gap-10 px-6">
+        {/* Левая часть: змейка с блоками */}
+        <div className="relative flex-1 flex justify-center lg:justify-end max-w-[600px] mx-auto lg:mx-0">
+          <div className="relative w-full max-w-[500px]">
             {steps.map((step, idx) => (
-              <div key={step.title} className="relative flex">
+              <div key={step.title} className="relative mb-20 last:mb-0">
+                {/* Круглый индикатор слева */}
+                <div className="absolute left-0 top-7 w-5 h-5 bg-blue-500 rounded-full z-10"></div>
+                
+                {/* Блок с информацией */}
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: idx * 0.13 }}
-                  className={`w-full ${getStepTranslate(idx)}`}
+                  className={`relative ${getStepTransform(idx)}`}
                 >
-                  <div className="relative flex items-center mb-16">
-                    {/* Буллит */}
-                    <div className="absolute left-[-27px] top-7 z-20">
-                      <span className="block w-5 h-5 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full border-4 border-black shadow-lg"></span>
-                    </div>
-                    {/* Блок */}
-                    <div
-                      className="bg-gradient-to-b from-neutral-900 to-neutral-950 rounded-xl shadow-xl px-7 py-6 w-[400px] min-h-[104px] border-[1.5px] border-[#23272f] transition-[border] duration-300"
-                    >
-                      <h3 className="text-lg font-bold text-white mb-2">
-                        {step.title}
-                      </h3>
-                      <ul className="text-neutral-400 text-sm space-y-2">
-                        {step.description.map((desc, i) => (
-                          <li key={i} className="flex items-start">
-                            <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
-                            <span>{desc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  <div className="bg-neutral-900 rounded-lg border border-neutral-800 p-6 ml-8 shadow-lg max-w-[400px]">
+                    <h3 className="text-lg font-bold text-white mb-2">
+                      {step.title}
+                    </h3>
+                    <ul className="text-neutral-400 text-sm space-y-3">
+                      {step.description.map((desc, i) => (
+                        <li key={i} className="flex items-start">
+                          <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+                          <span>{desc}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  {/* Линия (кроме последнего) */}
-                  <SnakeLine index={idx} />
                 </motion.div>
+                
+                {/* Соединительная линия */}
+                <SnakeLine index={idx} />
               </div>
             ))}
           </div>
         </div>
+        
         {/* Правая часть: айфон с видео */}
-        <div className="flex-1 flex justify-center items-start mt-12 lg:mt-0">
+        <div className="flex-1 flex justify-center items-start lg:mt-12">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -152,11 +149,12 @@ export function ProcessSection() {
             className="sticky top-32"
           >
             <div className="relative mx-auto w-[266px] h-[555px]">
-              {/* Phone outer case */}
+              {/* Корпус телефона */}
               <div className="absolute inset-0 rounded-[46px] bg-neutral-800 shadow-xl overflow-hidden border-[10px] border-neutral-950">
-                {/* iPhone notch */}
+                {/* Вырез (notch) */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85px] h-[28px] bg-black rounded-b-3xl z-20"></div>
-                {/* Экран - встроенное Wistia-видео */}
+                
+                {/* Экран с видео */}
                 <div className="absolute inset-0 overflow-hidden bg-black flex flex-col justify-center items-center">
                   <iframe
                     src="https://fast.wistia.net/embed/iframe/xcdo71c2zz"
@@ -169,10 +167,12 @@ export function ProcessSection() {
                     title="Demo video"
                   />
                 </div>
-                {/* Home indicator */}
+                
+                {/* Индикатор Home */}
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[70px] h-1.5 bg-white/30 rounded-full"></div>
               </div>
-              {/* Phone buttons */}
+              
+              {/* Кнопки телефона */}
               <div className="absolute -left-1 top-[110px] h-12 w-1.5 bg-neutral-700 rounded-l"></div>
               <div className="absolute -left-1 top-[170px] h-10 w-1 bg-neutral-700 rounded-l"></div>
               <div className="absolute -right-1 top-[140px] h-14 w-1 bg-neutral-700 rounded-r"></div>
