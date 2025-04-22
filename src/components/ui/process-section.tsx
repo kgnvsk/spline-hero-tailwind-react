@@ -40,37 +40,20 @@ const steps = [
   }
 ];
 
-// Функция для определения смещения для зигзага
-function getStepTransform(idx: number) {
-  // Нечетные блоки смещаем вправо на 100px (для создания зигзага)
-  return idx % 2 === 0 ? "translate-x-0" : "translate-x-[100px]";
-}
-
 // SVG-линия для соединения блоков в зигзаг
-function SnakeLine({ index }: { index: number }) {
-  // Для последнего элемента линии не рисуем
-  if (index === steps.length - 1) return null;
-
-  // Определяем тип линии в зависимости от четности шага
-  const isEven = index % 2 === 0;
-  
+function ConnectingLine({ position }: { position: "left-to-right" | "right-to-left" }) {
+  const pathData = position === "left-to-right"
+    ? "M0,0 C30,0 30,40 60,40"     // From left to right
+    : "M0,0 C-30,0 -30,40 -60,40"; // From right to left
+    
   return (
-    <svg
-      className="absolute w-[100px] h-[70px] overflow-visible z-0"
-      style={{
-        left: isEven ? "27px" : "127px", // Позиционирование линии в зависимости от блока
-        top: "100%",
-        stroke: "#333",
-        strokeWidth: 2
-      }}
-    >
+    <svg className="absolute w-16 h-10 overflow-visible" style={{ bottom: "-40px", [position === "left-to-right" ? "right" : "left"]: "30%" }}>
       <path
-        d={isEven
-          ? "M0,0 L0,35 L100,35 L100,70" // от левого блока к правому
-          : "M0,0 L0,35 L-100,35 L-100,70" // от правого блока к левому
-        }
+        d={pathData}
         fill="none"
         stroke="#333"
+        strokeWidth="2"
+        strokeDasharray="4 4"
       />
     </svg>
   );
@@ -79,105 +62,121 @@ function SnakeLine({ index }: { index: number }) {
 export function ProcessSection() {
   return (
     <div className="py-20 bg-black relative overflow-hidden">
-      {/* Заголовок и описание секции */}
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-4xl font-bold text-center text-white mb-4"
-      >
-        Як працює AI Sales Manager
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-        className="text-center text-neutral-400 mb-16 max-w-2xl mx-auto px-4"
-      >
-        AI Sales Manager інтегрується у ваші системи та працює на повну потужність
-      </motion.p>
+      {/* Header section - title and description */}
+      <div className="container mx-auto px-6 mb-16">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-4xl font-bold text-center text-white mb-4"
+        >
+          Як працює AI Sales Manager
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          className="text-center text-neutral-400 max-w-2xl mx-auto"
+        >
+          AI Sales Manager інтегрується у ваші системи та працює на повну потужність
+        </motion.p>
+      </div>
       
-      {/* Основной контент */}
-      <div className="container mx-auto flex flex-col lg:flex-row justify-center gap-10 px-6">
-        {/* Левая часть: змейка с блоками */}
-        <div className="relative flex-1 flex justify-center lg:justify-end max-w-[600px] mx-auto lg:mx-0">
-          <div className="relative w-full max-w-[500px]">
-            {steps.map((step, idx) => (
-              <div key={step.title} className="relative mb-20 last:mb-0">
-                {/* Круглый индикатор слева */}
-                <div className="absolute left-0 top-7 w-5 h-5 bg-blue-500 rounded-full z-10"></div>
+      {/* Main content area */}
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-12">
+          {/* Left column - zigzag process */}
+          <div className="w-full lg:w-3/5 relative">
+            <div className="relative">
+              {steps.map((step, idx) => {
+                // Determine if the step should be on the left or right side
+                const isLeft = idx % 2 === 0;
                 
-                {/* Блок с информацией */}
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: idx * 0.13 }}
-                  className={`relative ${getStepTransform(idx)}`}
-                >
-                  <div className="bg-neutral-900 rounded-lg border border-neutral-800 p-6 ml-8 shadow-lg max-w-[400px]">
-                    <h3 className="text-lg font-bold text-white mb-2">
-                      {step.title}
-                    </h3>
-                    <ul className="text-neutral-400 text-sm space-y-3">
-                      {step.description.map((desc, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
-                          <span>{desc}</span>
-                        </li>
-                      ))}
-                    </ul>
+                return (
+                  <div 
+                    key={step.title} 
+                    className={`relative mb-20 last:mb-0 flex ${isLeft ? 'justify-start' : 'justify-end'}`}
+                  >
+                    {/* Step indicator circle */}
+                    <div 
+                      className={`absolute ${isLeft ? 'left-0' : 'right-0'} top-7 w-5 h-5 bg-blue-500 rounded-full z-10`}
+                    ></div>
+                    
+                    {/* Step content box */}
+                    <motion.div
+                      initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7, delay: idx * 0.15 }}
+                      className={`w-5/6 sm:w-3/4 ${isLeft ? 'ml-8' : 'mr-8'}`}
+                    >
+                      <div className="bg-neutral-900 rounded-lg border border-neutral-800 p-6 shadow-lg">
+                        <h3 className="text-lg font-bold text-white mb-3">
+                          {step.title}
+                        </h3>
+                        <ul className="text-neutral-400 text-sm space-y-3">
+                          {step.description.map((desc, i) => (
+                            <li key={i} className="flex items-start">
+                              <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+                              <span>{desc}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                    
+                    {/* Connecting line (except for the last step) */}
+                    {idx < steps.length - 1 && (
+                      <ConnectingLine position={isLeft ? "left-to-right" : "right-to-left"} />
+                    )}
                   </div>
-                </motion.div>
-                
-                {/* Соединительная линия */}
-                <SnakeLine index={idx} />
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
-        </div>
-        
-        {/* Правая часть: айфон с видео */}
-        <div className="flex-1 flex justify-center items-start lg:mt-12">
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-            className="sticky top-32"
-          >
-            <div className="relative mx-auto w-[266px] h-[555px]">
-              {/* Корпус телефона */}
-              <div className="absolute inset-0 rounded-[46px] bg-neutral-800 shadow-xl overflow-hidden border-[10px] border-neutral-950">
-                {/* Вырез (notch) */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85px] h-[28px] bg-black rounded-b-3xl z-20"></div>
-                
-                {/* Экран с видео */}
-                <div className="absolute inset-0 overflow-hidden bg-black flex flex-col justify-center items-center">
-                  <iframe
-                    src="https://fast.wistia.net/embed/iframe/xcdo71c2zz"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    width="220"
-                    height="470"
-                    className="rounded-[30px] border-0 shadow-xl my-6"
-                    style={{ background: "black", width: "220px", height: "470px", display: "block" }}
-                    title="Demo video"
-                  />
+          
+          {/* Right column - iPhone mockup */}
+          <div className="w-full lg:w-2/5 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+              className="sticky top-32"
+            >
+              <div className="relative mx-auto w-[266px] h-[555px]">
+                {/* Phone frame */}
+                <div className="absolute inset-0 rounded-[46px] bg-neutral-800 shadow-xl overflow-hidden border-[10px] border-neutral-950">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85px] h-[28px] bg-black rounded-b-3xl z-20"></div>
+                  
+                  {/* Screen with video */}
+                  <div className="absolute inset-0 overflow-hidden bg-black flex flex-col justify-center items-center">
+                    <iframe
+                      src="https://fast.wistia.net/embed/iframe/xcdo71c2zz"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      width="220"
+                      height="470"
+                      className="rounded-[30px] border-0 shadow-xl my-6"
+                      style={{ background: "black", width: "220px", height: "470px", display: "block" }}
+                      title="Demo video"
+                    />
+                  </div>
+                  
+                  {/* Home indicator */}
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[70px] h-1.5 bg-white/30 rounded-full"></div>
                 </div>
                 
-                {/* Индикатор Home */}
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[70px] h-1.5 bg-white/30 rounded-full"></div>
+                {/* Phone buttons */}
+                <div className="absolute -left-1 top-[110px] h-12 w-1.5 bg-neutral-700 rounded-l"></div>
+                <div className="absolute -left-1 top-[170px] h-10 w-1 bg-neutral-700 rounded-l"></div>
+                <div className="absolute -right-1 top-[140px] h-14 w-1 bg-neutral-700 rounded-r"></div>
               </div>
-              
-              {/* Кнопки телефона */}
-              <div className="absolute -left-1 top-[110px] h-12 w-1.5 bg-neutral-700 rounded-l"></div>
-              <div className="absolute -left-1 top-[170px] h-10 w-1 bg-neutral-700 rounded-l"></div>
-              <div className="absolute -right-1 top-[140px] h-14 w-1 bg-neutral-700 rounded-r"></div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
