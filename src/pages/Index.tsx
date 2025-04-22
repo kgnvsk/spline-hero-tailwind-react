@@ -10,15 +10,15 @@ import { Squares } from "@/components/ui/squares-background";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-hidden">
       {/* ЧЁРНЫЙ ФОН */}
       <div
         className="fixed inset-0 w-full h-full bg-black z-0"
         aria-hidden="true"
       />
       
-      {/* АНИМИРОВАННАЯ СЕТКА - Ensures it's in a dedicated layer with nothing overlapping it in the same z-index */}
-      <div className="fixed inset-0 w-full h-full z-10">
+      {/* АНИМИРОВАННАЯ СЕТКА - стоит в слое z-10 */}
+      <div className="fixed inset-0 w-full h-full" style={{ zIndex: 10 }}>
         <Squares
           direction="diagonal"
           speed={0.5}
@@ -29,8 +29,11 @@ const Index = () => {
       </div>
       
       {/* ВЕСЬ КОНТЕНТ (z-20) */}
-      <div className="relative z-20">
+      <div className="relative" style={{ zIndex: 20 }}>
+        {/* Spotlight не должен получать события мыши */}
         <Spotlight className="pointer-events-none" />
+        
+        {/* Контент должен получать события мыши */}
         <div>
           <SplineSceneBasic />
           <Hero />
