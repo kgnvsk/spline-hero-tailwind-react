@@ -156,4 +156,43 @@
   }
 
   /* Removed star border animations as they're no longer needed */
+  /* Star Border Animations for the button's sparkling effect */
+  @keyframes star-movement-top {
+    0% {
+      transform: translateX(-70%) translateY(-35%);
+      opacity: 0.5;
+    }
+    30% {
+      opacity: 0.85;
+    }
+    60% {
+      opacity: 0.75;
+    }
+    100% {
+      transform: translateX(70%) translateY(-35%);
+      opacity: 0.5;
+    }
+  }
+  @keyframes star-movement-bottom {
+    0% {
+      transform: translateX(-70%) translateY(35%);
+      opacity: 0.3;
+    }
+    30% {
+      opacity: 0.6;
+    }
+    60% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateX(70%) translateY(35%);
+      opacity: 0.3;
+    }
+  }
+  .animate-star-movement-top {
+    animation: star-movement-top 6s linear infinite;
+  }
+  .animate-star-movement-bottom {
+    animation: star-movement-bottom 7s linear infinite;
+  }
 }
