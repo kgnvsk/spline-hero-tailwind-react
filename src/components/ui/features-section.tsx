@@ -10,18 +10,21 @@ export function FeaturesSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.2,
+        delayChildren: 0.3
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
+        type: "spring",
+        damping: 20,
+        stiffness: 100
       }
     }
   };
@@ -30,8 +33,9 @@ export function FeaturesSection() {
     <div className="py-10 lg:py-20 bg-black">
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
         className="text-4xl font-bold text-center text-white mb-16"
       >
         Основні функції
@@ -39,7 +43,8 @@ export function FeaturesSection() {
       <motion.div 
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto px-6"
       >
         {features.map((feature) => (
@@ -49,8 +54,6 @@ export function FeaturesSection() {
             className="relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden group"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-3xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500 animate-pulse" />
-            
             <Grid size={20} />
             <div className="relative z-20">
               <feature.icon className="w-8 h-8 text-white mb-4" />
