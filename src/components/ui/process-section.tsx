@@ -94,34 +94,47 @@ export function ProcessSection() {
           AI Sales Manager інтегрується у ваші системи та працює на повну потужність
         </motion.p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-12 relative">
-            {/* Snake path - updated to be more curved */}
-            <div className="absolute hidden lg:block" style={{ top: '0', bottom: '0', left: '50%', transform: 'translateX(-50%)' }}>
-              {/* Vertical lines */}
-              <div className="absolute w-1 h-[20%] bg-gradient-to-b from-purple-500 to-blue-500" style={{ top: '0%' }}></div>
-              <div className="absolute w-1 h-[20%] bg-gradient-to-b from-purple-500 to-blue-500" style={{ top: '40%' }}></div>
-              <div className="absolute w-1 h-[20%] bg-gradient-to-b from-purple-500 to-blue-500" style={{ top: '80%' }}></div>
-              
-              {/* Horizontal curved lines */}
-              <div className="absolute h-1 w-64 bg-gradient-to-r from-purple-500 to-blue-500" 
-                   style={{ top: '20%', right: '0', transform: 'translateX(50%)', borderRadius: '0 20px 20px 0' }}></div>
-              <div className="absolute h-1 w-64 bg-gradient-to-r from-blue-500 to-purple-500" 
-                   style={{ top: '60%', left: '0', transform: 'translateX(-50%)', borderRadius: '20px 0 0 20px' }}></div>
-            </div>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Snake path */}
+          <div className="absolute hidden lg:block" style={{ left: '0', right: '0', top: '0', bottom: '0', zIndex: 0 }}>
+            {/* Horizontal paths */}
+            <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                 style={{ top: '10%', left: '0', width: '100%' }}></div>
+            <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
+                 style={{ top: '30%', left: '0', width: '100%' }}></div>
+            <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                 style={{ top: '50%', left: '0', width: '100%' }}></div>
+            <div className="absolute h-2 bg-gradient-to-r from-blue-500 to-purple-500" 
+                 style={{ top: '70%', left: '0', width: '100%' }}></div>
+            <div className="absolute h-2 bg-gradient-to-r from-purple-500 to-blue-500" 
+                 style={{ top: '90%', left: '0', width: '100%' }}></div>
             
+            {/* Curved connections */}
+            <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500 rounded-r-full" 
+                 style={{ top: '10%', right: '0', height: '20%' }}></div>
+            <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500 rounded-l-full" 
+                 style={{ top: '30%', left: '0', height: '20%' }}></div>
+            <div className="absolute w-2 bg-gradient-to-b from-purple-500 to-blue-500 rounded-r-full" 
+                 style={{ top: '50%', right: '0', height: '20%' }}></div>
+            <div className="absolute w-2 bg-gradient-to-b from-blue-500 to-purple-500 rounded-l-full" 
+                 style={{ top: '70%', left: '0', height: '20%' }}></div>
+          </div>
+
+          {/* Process steps */}
+          <div className="relative z-10">
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
                 variants={itemVariants}
-                className={`relative ${index % 2 === 0 ? 'lg:mr-32' : 'lg:ml-32'}`}
+                className={`relative mb-16 last:mb-0 ${
+                  index % 2 === 0 ? 'lg:ml-0 lg:mr-[50%]' : 'lg:ml-[50%] lg:mr-0'
+                }`}
                 style={{
-                  width: 'calc(100% - 50px)',
-                  marginTop: index === 0 ? '0' : index === 1 ? '80px' : index === 2 ? '40px' : index === 3 ? '80px' : '40px'
+                  width: '45%',
+                  marginTop: index === 0 ? '0' : '40px'
                 }}
               >
                 <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden relative">
-                  {/* Add Grid pattern similar to features section */}
                   <Grid size={20} />
                   <div className="relative z-20">
                     <h3 className="text-lg font-bold text-white mb-4">
@@ -139,38 +152,6 @@ export function ProcessSection() {
                 </div>
               </motion.div>
             ))}
-          </div>
-          
-          <div className="relative">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-              className="relative mx-auto w-[300px] h-[600px] bg-black rounded-[3rem] border-4 border-neutral-800 p-2"
-            >
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-6 bg-black rounded-b-2xl">
-                <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-20 h-2 bg-neutral-800 rounded-full"></div>
-              </div>
-              <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] bg-neutral-900">
-                {/* Fixed video embed */}
-                <div className="w-full h-full">
-                  <div style={{padding:"0", position:"relative", height: "100%", width: "100%"}}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/xcdo71c2zz" 
-                      title="AI Sales Manager Demo" 
-                      allow="autoplay; fullscreen" 
-                      allowTransparency={true} 
-                      frameBorder="0" 
-                      scrolling="no" 
-                      className="wistia_embed" 
-                      name="wistia_embed" 
-                      width="100%" 
-                      height="100%">
-                    </iframe>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </motion.div>
