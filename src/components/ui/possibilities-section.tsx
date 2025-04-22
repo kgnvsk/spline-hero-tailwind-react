@@ -52,7 +52,7 @@ export function PossibilitiesSection() {
   };
 
   return (
-    <section className="py-16 lg:py-24 relative z-10 font-manrope">
+    <section className="py-16 lg:py-24 relative z-10 font-russo">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,10 +60,10 @@ export function PossibilitiesSection() {
         transition={{ duration: 0.7 }}
         className="text-center max-w-4xl mx-auto px-6 mb-12"
       >
-        <h2 className="text-4xl font-extrabold mb-4 font-manrope heading-gradient heading-shadow">
+        <h2 className="text-4xl font-extrabold mb-4 font-russo heading-white">
           Можливості
         </h2>
-        <p className="text-neutral-400 font-manrope">
+        <p className="text-neutral-400 font-russo">
           AI Sales Manager надає унікальні можливості для вашого бізнесу
         </p>
       </motion.div>
@@ -84,8 +84,8 @@ export function PossibilitiesSection() {
             <Grid size={20} />
             <div className="relative z-20">
               <item.icon className="w-8 h-8 text-white mb-4" />
-              <p className="text-lg font-extrabold mb-4 font-manrope">{item.title}</p>
-              <p className="text-neutral-400 text-sm font-manrope">{item.description}</p>
+              <p className="text-lg font-extrabold mb-4 font-russo text-white">{item.title}</p>
+              <p className="text-neutral-400 text-sm font-russo">{item.description}</p>
             </div>
           </motion.div>
         ))}

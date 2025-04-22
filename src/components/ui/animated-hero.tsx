@@ -13,11 +13,9 @@ function Hero() {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (titleNumber === titles.length - 1) {
-        setTitleNumber(0);
-      } else {
-        setTitleNumber(titleNumber + 1);
-      }
+      setTitleNumber((prev) =>
+        prev === titles.length - 1 ? 0 : prev + 1
+      );
     }, 2000);
     return () => clearTimeout(timeoutId);
   }, [titleNumber, titles]);
@@ -27,26 +25,23 @@ function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-playfair heading-gradient heading-shadow">
-              <span className="text-3xl md:text-4xl block mb-4 font-playfair">АІ менеджер це:</span>
+            {/* Основной заголовок: градиент */}
+            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
+              <span className="text-3xl md:text-4xl block mb-4 font-russo heading-white">
+                АІ менеджер це:
+              </span>
               <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
                 &nbsp;
-                {titles.map((title, index) => (
+                {titles.map((title, idx) => (
                   <motion.span
-                    key={index}
-                    className="absolute font-semibold whitespace-nowrap font-playfair"
+                    key={idx}
+                    className="absolute font-semibold whitespace-nowrap font-russo heading-white"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
-                      titleNumber === index
-                        ? {
-                            y: 0,
-                            opacity: 1,
-                          }
-                        : {
-                            y: titleNumber > index ? -150 : 150,
-                            opacity: 0,
-                          }
+                      titleNumber === idx
+                        ? { y: 0, opacity: 1 }
+                        : { y: titleNumber > idx ? -150 : 150, opacity: 0 }
                     }
                   >
                     {title}
@@ -56,19 +51,17 @@ function Hero() {
             </h1>
           </div>
           <div className="flex flex-row gap-3">
-            {/* Чёрная кнопка слева */}
             <ShimmerButton
               shimmerColor="#fff"
               background="rgba(0,0,0,1)"
-              className="text-white dark:text-white"
+              className="text-white dark:text-white font-russo"
             >
               Написати нам <PhoneCall className="w-4 h-4" />
             </ShimmerButton>
-            {/* Белая кнопка справа */}
             <ShimmerButton
               shimmerColor="#000"
               background="#fff"
-              className="text-black"
+              className="text-black font-russo"
             >
               Отримати демо <MoveRight className="w-4 h-4" />
             </ShimmerButton>

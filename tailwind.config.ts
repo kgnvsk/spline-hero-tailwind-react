@@ -17,6 +17,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				russo: ['Russo One', 'system-ui', 'sans-serif'],
 				manrope: ['Manrope', 'system-ui', 'sans-serif'],
 			},
 			colors: {
