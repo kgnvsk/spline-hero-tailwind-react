@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -65,9 +64,7 @@ function ZigzagConnector() {
 
 export function ProcessSection() {
   return (
-    <div
-      className="py-20 bg-black relative overflow-visible"
-    >
+    <div className="py-20 bg-black relative overflow-visible">
       {/* Header section */}
       <div className="container mx-auto px-6 mb-10">
         <motion.h2
@@ -105,15 +102,19 @@ export function ProcessSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: idx * 0.09 }}
-                className="relative z-10 bg-neutral-900 rounded-2xl shadow-xl border border-neutral-800 px-6 py-5 max-w-[290px] ml-auto"
-                style={i === 0 ? {marginTop: 0} : {}}
+                className="relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden z-10"
               >
-                <h3 className="text-lg font-bold text-white mb-2">{steps[idx].title}</h3>
-                <ul className="text-neutral-300 text-sm space-y-2">
-                  {steps[idx].description.map((desc, i) => (
-                    <li key={i}>{desc}</li>
-                  ))}
-                </ul>
+                <div className="relative z-20">
+                  <h3 className="text-lg font-bold text-white mb-4">{steps[idx].title}</h3>
+                  <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none">
+                    {steps[idx].description.map((desc, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>{desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -126,14 +127,19 @@ export function ProcessSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: idx * 0.09 }}
-                className="relative z-10 bg-neutral-900 rounded-2xl shadow-xl border border-neutral-800 px-6 py-5 max-w-[290px] mr-auto"
+                className="relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden z-10"
               >
-                <h3 className="text-lg font-bold text-white mb-2">{steps[idx].title}</h3>
-                <ul className="text-neutral-300 text-sm space-y-2">
-                  {steps[idx].description.map((desc, i) => (
-                    <li key={i}>{desc}</li>
-                  ))}
-                </ul>
+                <div className="relative z-20">
+                  <h3 className="text-lg font-bold text-white mb-4">{steps[idx].title}</h3>
+                  <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none">
+                    {steps[idx].description.map((desc, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>{desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -175,14 +181,21 @@ export function ProcessSection() {
           </motion.div>
         </div>
       </div>
+
       {/* Мобильная версия — прежняя: все карточки и телефон под ними */}
       <div className="lg:hidden block mt-10 px-4">
         {[0, 1, 2, 3, 4].map(idx => (
-          <div key={idx} className="mb-5 bg-neutral-900 rounded-2xl shadow-md border border-neutral-800 px-5 py-4">
-            <h3 className="text-base font-bold text-white mb-2">{steps[idx].title}</h3>
-            <ul className="text-neutral-300 text-sm space-y-1">
-              {steps[idx].description.map((desc, i) => (
-                <li key={i}>{desc}</li>
+          <div 
+            key={idx} 
+            className="mb-5 bg-gradient-to-b from-neutral-900 to-neutral-950 rounded-3xl p-6"
+          >
+            <h3 className="text-base font-bold text-white mb-4">{steps[idx].title}</h3>
+            <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none">
+              {steps[idx].description.map((desc, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
+                  <span>{desc}</span>
+                </li>
               ))}
             </ul>
           </div>
