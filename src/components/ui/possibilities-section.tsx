@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Zap, Globe, Workflow, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
@@ -8,22 +9,30 @@ const possibilities = [
   {
     title: "Швидкий старт",
     icon: Zap,
-    description: "Запуск можливий уже за кілька днів після встановлення й базового налаштування."
+    description: [
+      "Запуск можливий уже за кілька днів після встановлення й базового налаштування."
+    ]
   },
   {
     title: "Мультиплатформність",
     icon: Globe,
-    description: "Інтегрується не лише з Instagram, а й із Facebook Messenger, WhatsApp Business та іншими каналами."
+    description: [
+      "Інтегрується не лише з Instagram, а й із Facebook Messenger, WhatsApp Business та іншими каналами."
+    ]
   },
   {
     title: "Гнучка адаптація",
     icon: Workflow,
-    description: "Підходить для будь-якого бізнесу: від e-commerce, що продає одяг, до послуг зі страхування чи туризму."
+    description: [
+      "Підходить для будь-якого бізнесу: від e-commerce, що продає одяг, до послуг зі страхування чи туризму."
+    ]
   },
   {
     title: "Прозорість результатів",
     icon: BarChart,
-    description: "Ви бачите статистику: кількість звернень, конверсії з діректу, суми продажів. Можливість A/B тестування різних підходів."
+    description: [
+      "Ви бачите статистику: кількість звернень, конверсії з діректу, суми продажів. Можливість A/B тестування різних підходів."
+    ]
   }
 ];
 
@@ -80,7 +89,7 @@ export function PossibilitiesSection() {
           <motion.div
             key={item.title}
             variants={itemVariants}
-            className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-6 rounded-3xl overflow-hidden backdrop-blur-sm h-full"
+            className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-6 rounded-3xl overflow-hidden backdrop-blur-sm h-full flex flex-col"
           >
             <GlowingEffect
               spread={38}
