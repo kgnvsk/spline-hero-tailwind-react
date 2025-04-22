@@ -34,16 +34,16 @@ function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
-              <span className="text-3xl md:text-4xl block mb-4 font-russo text-neutral-400 tracking-wide">
+            <h1 className="text-3xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
+              <span className="text-2xl md:text-4xl block mb-4 font-russo text-neutral-400 tracking-wide">
                 АІ менеджер це:
               </span>
-              <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
+              <span className="relative flex w-full justify-center overflow-visible h-12 md:h-24">
                 &nbsp;
                 {titles.map((title, idx) => (
                   <motion.span
                     key={idx}
-                    className="absolute font-semibold whitespace-nowrap font-russo heading-white"
+                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-sm md:text-base"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
@@ -62,18 +62,18 @@ function Hero() {
             <ShimmerButton
               shimmerColor="#fff"
               background="rgba(0,0,0,1)"
-              className="text-white dark:text-white font-russo"
+              className="text-white dark:text-white font-russo text-xs md:text-sm"
               onClick={() => handleTelegramClick("Написати нам")}
             >
-              Написати нам <PhoneCall className="w-4 h-4" />
+              Написати нам <PhoneCall className="w-3 h-3" />
             </ShimmerButton>
             <ShimmerButton
               shimmerColor="#000"
               background="#fff"
-              className="text-black font-russo"
+              className="text-black font-russo text-xs md:text-sm"
               onClick={() => handleTelegramClick("Отримати демо")}
             >
-              Отримати демо <MoveRight className="w-4 h-4" />
+              Отримати демо <MoveRight className="w-3 h-3" />
             </ShimmerButton>
           </div>
         </div>
@@ -83,3 +83,4 @@ function Hero() {
 }
 
 export { Hero };
+
