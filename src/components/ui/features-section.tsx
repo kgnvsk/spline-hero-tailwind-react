@@ -1,7 +1,9 @@
+
 import React from "react";
 import { useId } from "react";
 import { MessageCircle, TrendingUp, Database, ChartBar } from "lucide-react";
 import { motion } from "framer-motion";
+import { GlowingEffect } from "@/components/ui/glowing-effect"; // Added import
 
 export function FeaturesSection() {
   const containerVariants = {
@@ -52,6 +54,16 @@ export function FeaturesSection() {
             variants={itemVariants}
             className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-6 rounded-3xl overflow-hidden backdrop-blur-sm"
           >
+            {/* Added GlowingEffect for consistency */}
+            <GlowingEffect
+              spread={38}
+              glow={true}
+              disabled={false}
+              proximity={72}
+              inactiveZone={0.01}
+              borderWidth={3}
+              className="z-10"
+            />
             <Grid size={20} />
             <div className="relative z-20">
               <feature.icon className="w-8 h-8 text-white mb-4" />

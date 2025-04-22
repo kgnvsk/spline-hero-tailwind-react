@@ -2,7 +2,7 @@
 import React from "react";
 import { User, Users, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
-import { GlowingEffect } from "@/components/ui/glowing-effect"; // добавляем импорт
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const benefits = [
   {
@@ -81,11 +81,11 @@ export function BenefitsSection() {
             variants={itemVariants}
             className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-7 rounded-3xl overflow-hidden shadow-lg backdrop-blur-sm"
           >
-            {/* GlowingEffect for border */}
+            {/* GlowingEffect for border - now properly enabled */}
             <GlowingEffect
               spread={38}
               glow={true}
-              disabled={false}
+              disabled={false} /* Changed from true to false to enable the effect */
               proximity={72}
               inactiveZone={0.01}
               borderWidth={3}
@@ -106,4 +106,3 @@ export function BenefitsSection() {
     </section>
   );
 }
-
