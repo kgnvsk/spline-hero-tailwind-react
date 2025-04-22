@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useId } from "react";
 import { MessageCircle, TrendingUp, Database, ChartBar } from "lucide-react";
@@ -51,9 +50,8 @@ export function FeaturesSection() {
           <motion.div
             key={feature.title}
             variants={itemVariants}
-            className="relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden group"
+            className="relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <Grid size={20} />
             <div className="relative z-20">
               <feature.icon className="w-8 h-8 text-white mb-4" />
