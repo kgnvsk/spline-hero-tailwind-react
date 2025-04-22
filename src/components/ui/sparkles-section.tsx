@@ -1,11 +1,38 @@
 
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 
 export function SparklesSection() {
+  const widgetRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    // добавить только если элемента нет
+    if (!document.getElementById("elevenlabs-widget-script")) {
+      const script = document.createElement("script");
+      script.id = "elevenlabs-widget-script";
+      script.src = "https://elevenlabs.io/convai-widget/index.js";
+      script.async = true;
+      script.type = "text/javascript";
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Переместим виджет внутрь текущей секции при маунте
+    if (widgetRef.current && !widgetRef.current.querySelector("elevenlabs-convai")) {
+      const widget = document.createElement("elevenlabs-convai");
+      widget.setAttribute("agent-id", "aGDIPWEQyXk5ZFnlOvI6");
+      // Можно добавить стили, чтобы он всегда был прижат к нижу секции
+      widget.style.display = "block";
+      widget.style.width = "340px";
+      widget.style.margin = "0 auto";
+      widgetRef.current.appendChild(widget);
+    }
+  }, []);
+
   return (
-    <div className="h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4">
+    <div className="relative h-[16rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md py-4">
       <h1 className="md:text-lg text-xs lg:text-xl font-bold text-center text-white relative z-20">
         Є питання? Задай нашому голосовому АІ асистенту
       </h1>
@@ -29,6 +56,12 @@ export function SparklesSection() {
         {/* Radial Gradient to prevent sharp edges */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
+      {/* Контейнер для виджета - всегда прижат к низу этой секции */}
+      <div
+        ref={widgetRef}
+        className="absolute left-1/2 -translate-x-1/2 bottom-2 z-50"
+        style={{ pointerEvents: "auto" }}
+      />
     </div>
   );
 }
