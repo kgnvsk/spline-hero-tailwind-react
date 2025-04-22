@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useId } from "react";
 import { MessageCircle, TrendingUp, Database, ChartBar } from "lucide-react";
@@ -63,12 +64,14 @@ export function FeaturesSection() {
               className="z-10"
             />
             <Grid size={20} />
-            <div className="relative z-20">
-              <feature.icon className="w-8 h-8 text-white mb-4" />
+            <div className="relative z-20 flex flex-col">
+              <div className="min-h-[32px] flex items-center mb-0">
+                <feature.icon className="w-8 h-8 text-white mr-0" />
+              </div>
               <p className="text-lg font-extrabold text-white mb-4 font-russo">
                 {feature.title}
               </p>
-              <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo flex flex-col">
+              <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo flex flex-col mt-0">
                 {feature.items.map((item, index) => (
                   <li key={index} className="flex items-center">
                     <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0"></span>
