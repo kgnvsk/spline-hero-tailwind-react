@@ -14,14 +14,14 @@ export const ProcessGridCard: React.FC<ProcessGridCardProps> = ({
 }) => {
   return (
     <div
-      className={`relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden min-h-[240px] flex flex-col ${className}`}
+      className={`relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden min-h-[240px] ${className}`}
     >
       <ProcessCardGridGraphic size={20} />
-      <div className="flex flex-col justify-between h-full z-20 relative">
-        <p className="text-base font-bold text-neutral-800 dark:text-white mb-4">
+      <div className="flex flex-col h-full justify-between z-20 relative">
+        <h3 className="text-base font-bold text-neutral-800 dark:text-white">
           {title}
-        </p>
-        <ul className="text-neutral-600 dark:text-neutral-400 text-sm pl-0 list-none space-y-2 mb-0">
+        </h3>
+        <ul className="text-neutral-600 dark:text-neutral-400 text-sm pl-0 list-none space-y-2 mt-4">
           {description.map((item, i) => (
             <li key={i} className="flex items-start">
               <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
