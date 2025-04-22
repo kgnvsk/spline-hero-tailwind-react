@@ -1,36 +1,43 @@
 
 import React from 'react';
 import { useId } from "react";
+import { User, Users, ShieldCheck } from "lucide-react";
 
 const AIAgentFeatures = () => {
   const features = [
     {
       title: "Людський фактор",
-      description: "AI Агент не втомлюється, не ображається, не помиляється, не запізнюється, не забуває, не підвладний емоціям."
+      description: "AI Агент не втомлюється, не ображається, не помиляється, не запізнюється, не забуває, не підвладний емоціям.",
+      icon: <User className="w-6 h-6 text-blue-500" />
     },
     {
       title: "Плинність кадрів",
-      description: "Цикл роботи кадрів на даній посаді зазвичай займає від кількох місяців до року. З AI Агентом, ви забезпечені від цього."
+      description: "Цикл роботи кадрів на даній посаді зазвичай займає від кількох місяців до року. З AI Агентом, ви забезпечені від цього.",
+      icon: <Users className="w-6 h-6 text-blue-500" />
     },
     {
       title: "Безпека",
-      description: "Ви не втрачаєте цінні знання та навички як це буває зазвичай при звільненні спеціаліста."
+      description: "Ви не втрачаєте цінні знання та навички як це буває зазвичай при звільненні спеціаліста.",
+      icon: <ShieldCheck className="w-6 h-6 text-blue-500" />
     }
   ];
 
   return (
-    <section className="py-16">
+    <section className="py-16 bg-black relative">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden"
+              className="relative bg-black border border-[#222] p-6 rounded-2xl overflow-hidden"
+              style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg opacity=\'0.05\'%3E%3Cpath d=\'M0 0H9.5V9.5H0V0Z\' fill=\'%23D9D9D9\'/%3E%3Cpath d=\'M10.5 0H20V9.5H10.5V0Z\' fill=\'%23D9D9D9\'/%3E%3Cpath d=\'M0 10.5H9.5V20H0V10.5Z\' fill=\'%23D9D9D9\'/%3E%3Cpath d=\'M10.5 10.5H20V20H10.5V10.5Z\' fill=\'%23D9D9D9\'/%3E%3C/g%3E%3C/svg%3E")' }}
             >
-              <GridBackground size={20} />
+              <div className="mb-6">
+                {feature.icon}
+              </div>
               <div className="relative z-10">
-                <h3 className="text-xl font-bold text-white">{feature.title}</h3>
-                <p className="text-neutral-400 text-base mt-4">{feature.description}</p>
+                <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
+                <p className="text-neutral-400 text-base">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -39,77 +46,5 @@ const AIAgentFeatures = () => {
     </section>
   );
 };
-
-// Grid background components
-const GridBackground = ({
-  pattern,
-  size,
-}: {
-  pattern?: number[][];
-  size?: number;
-}) => {
-  const p = pattern ?? [
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-  ];
-  return (
-    <div className="pointer-events-none absolute left-1/2 top-0 -ml-20 -mt-2 h-full w-full [mask-image:linear-gradient(white,transparent)]">
-      <div className="absolute inset-0 bg-gradient-to-r [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] dark:from-zinc-900/30 from-zinc-100/30 to-zinc-300/30 dark:to-zinc-900/30 opacity-100">
-        <GridPattern
-          width={size ?? 20}
-          height={size ?? 20}
-          x="-12"
-          y="4"
-          squares={p}
-          className="absolute inset-0 h-full w-full mix-blend-overlay dark:fill-white/10 dark:stroke-white/10 stroke-black/10 fill-black/10"
-        />
-      </div>
-    </div>
-  );
-};
-
-function GridPattern({ width, height, x, y, squares, ...props }: any) {
-  const patternId = useId();
-
-  return (
-    <svg aria-hidden="true" {...props}>
-      <defs>
-        <pattern
-          id={patternId}
-          width={width}
-          height={height}
-          patternUnits="userSpaceOnUse"
-          x={x}
-          y={y}
-        >
-          <path d={`M.5 ${height}V.5H${width}`} fill="none" />
-        </pattern>
-      </defs>
-      <rect
-        width="100%"
-        height="100%"
-        strokeWidth={0}
-        fill={`url(#${patternId})`}
-      />
-      {squares && (
-        <svg x={x} y={y} className="overflow-visible">
-          {squares.map(([sx, sy]: number[]) => (
-            <rect
-              strokeWidth="0"
-              key={`${sx}-${sy}`}
-              width={width + 1}
-              height={height + 1}
-              x={sx * width}
-              y={sy * height}
-            />
-          ))}
-        </svg>
-      )}
-    </svg>
-  );
-}
 
 export default AIAgentFeatures;
