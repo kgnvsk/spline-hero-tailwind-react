@@ -7,7 +7,6 @@ import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
 import { SparklesSection } from "@/components/ui/sparkles-section";
 import { Squares } from "@/components/ui/squares-background";
-// import AIAgentFeatures from "@/components/ui/ai-agent-features"; // Удалено
 import { Suspense } from "react";
 
 const Index = () => {
@@ -41,7 +40,6 @@ const Index = () => {
         <Hero />
         <BenefitsSection />
         <FeaturesSectionWithCardGradient />
-        {/* <AIAgentFeatures /> */} {/* Удалено */}
         <ProcessSection />
         <PossibilitiesSection />
         <div className="relative">
@@ -53,4 +51,3 @@ const Index = () => {
 };
 
 export default Index;
-
