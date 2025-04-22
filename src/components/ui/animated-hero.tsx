@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
@@ -34,7 +35,7 @@ function Hero() {
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
             <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
-              <span className="text-3xl md:text-4xl block mb-4 font-russo text-gray-400 tracking-wide">
+              <span className="text-3xl md:text-4xl block mb-4 font-russo text-neutral-400 tracking-wide">
                 АІ менеджер це:
               </span>
               <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
