@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 
@@ -100,10 +99,10 @@ export function SparklesSection() {
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
       
-      {/* Widget container - positioned at bottom right of this section only */}
+      {/* Widget container - now centered */}
       <div
         ref={widgetRef}
-        className="absolute right-4 bottom-4 z-50"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50"
         style={{ pointerEvents: "auto" }}
       />
     </div>
