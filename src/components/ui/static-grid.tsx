@@ -16,7 +16,7 @@ export const StaticGrid: React.FC<StaticGridProps> = ({
 }) => {
   // Генерируем CSS для сетки через градиенты
   const gridStyle: React.CSSProperties = {
-    position: "fixed", // Use fixed to overlay everything
+    position: "absolute", // Изменено с fixed на absolute
     top: 0,
     left: 0,
     right: 0,
@@ -30,7 +30,6 @@ export const StaticGrid: React.FC<StaticGridProps> = ({
     `,
     backgroundSize: `${size}px ${size}px`,
     opacity: opacity,
-    zIndex: 999, // Very high z-index to ensure it's at the foreground
     pointerEvents: "none", // So the grid doesn't block interactions
     userSelect: "none",
   };

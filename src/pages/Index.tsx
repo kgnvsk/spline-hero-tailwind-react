@@ -12,6 +12,14 @@ import { Squares } from "@/components/ui/squares-background";
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "#101014" }}>
+      {/* Static grid as the back layer */}
+      <StaticGrid 
+        color="#6b6b6b" 
+        size={48} 
+        opacity={0.4} 
+        className="absolute inset-0 z-0"
+      />
+      
       {/* Content layer */}
       <div className="relative z-20 min-h-screen">
         {/* Spotlight effect */}
@@ -26,14 +34,6 @@ const Index = () => {
           <PossibilitiesSection />
         </div>
       </div>
-
-      {/* Static grid as the back layer */}
-      <StaticGrid 
-        color="#6b6b6b" 
-        size={48} 
-        opacity={0.4} 
-        className="absolute inset-0 z-0"
-      />
     </div>
   );
 };
