@@ -181,4 +181,26 @@
   .animate-star-movement-bottom {
     animation: star-movement-bottom 7s linear infinite;
   }
+
+  /* Shimmer Animations */
+  @keyframes shimmer-slide {
+    0% {
+      transform: translateX(-45%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(145%) rotate(1turn);
+    }
+  }
+  .animate-shimmer-slide {
+    animation: shimmer-slide var(--speed, 3s) linear infinite;
+  }
+
+  @keyframes spin-around {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  .animate-spin-around {
+    animation: spin-around 3s linear infinite;
+  }
 }

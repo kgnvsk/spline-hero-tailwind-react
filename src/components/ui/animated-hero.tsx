@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
-import { StarBorder } from "@/components/ui/star-border";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -56,12 +56,22 @@ function Hero() {
             </h1>
           </div>
           <div className="flex flex-row gap-3">
-            <StarBorder variant="dark">
+            {/* Чёрная кнопка слева */}
+            <ShimmerButton
+              shimmerColor="#fff"
+              background="rgba(0,0,0,1)"
+              className="text-white dark:text-white"
+            >
               Написати нам <PhoneCall className="w-4 h-4" />
-            </StarBorder>
-            <StarBorder variant="light">
+            </ShimmerButton>
+            {/* Белая кнопка справа */}
+            <ShimmerButton
+              shimmerColor="#000"
+              background="#fff"
+              className="text-black"
+            >
               Отримати демо <MoveRight className="w-4 h-4" />
-            </StarBorder>
+            </ShimmerButton>
           </div>
         </div>
       </div>
