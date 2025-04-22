@@ -80,10 +80,30 @@ function SnakeLine({ index }: { index: number }) {
 export function ProcessSection() {
   return (
     <div className="py-20 bg-black relative overflow-x-hidden">
-      <div className="container mx-auto flex flex-col lg:flex-row gap-0 px-6">
+      {/* Section title, описание - переместили вверх */}
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="text-4xl font-bold text-center text-white mb-4"
+      >
+        Як працює AI Sales Manager
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+        className="text-center text-neutral-400 mb-16 max-w-2xl mx-auto"
+      >
+        AI Sales Manager інтегрується у ваші системи та працює на повну потужність
+      </motion.p>
+      
+      <div className="container mx-auto flex flex-col lg:flex-row gap-8 px-6">
         {/* Левая часть: змейка и блоки */}
         <div className="relative flex-1 flex justify-end">
-          <div className="relative w-[430px] z-10">
+          <div className="relative w-full max-w-[430px] z-10">
             {steps.map((step, idx) => (
               <div key={step.title} className="relative flex">
                 <motion.div
@@ -160,25 +180,6 @@ export function ProcessSection() {
           </motion.div>
         </div>
       </div>
-      {/* Section title, описание */}
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-4xl font-bold text-center text-white mb-4 mt-[-60px]"
-      >
-        Як працює AI Sales Manager
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-        className="text-center text-neutral-400 mb-10 max-w-2xl mx-auto"
-      >
-        AI Sales Manager інтегрується у ваші системи та працює на повну потужність
-      </motion.p>
     </div>
   );
 }
