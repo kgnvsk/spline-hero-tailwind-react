@@ -91,9 +91,9 @@ export function ProcessSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: idx * 0.13 }}
-                  className="w-full"
+                  className={`w-full ${getStepTranslate(idx)}`}
                 >
-                  <div className="relative flex items-center mb-0">
+                  <div className="relative flex items-center mb-16">
                     {/* Буллит */}
                     <div className="absolute left-[-27px] top-7 z-20">
                       <span className="block w-5 h-5 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full border-4 border-black shadow-lg"></span>
