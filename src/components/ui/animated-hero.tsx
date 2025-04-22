@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { StarBorder } from "@/components/ui/star-border";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -56,19 +56,14 @@ function Hero() {
             </h1>
           </div>
           <div className="flex flex-row gap-3">
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="bg-black text-white border-white hover:bg-white hover:text-black"
-            >
-              Написати нам <PhoneCall className="w-4 h-4 ml-2" />
-            </Button>
-            <Button 
-              size="lg" 
-              className="bg-white text-black hover:bg-gray-200"
-            >
-              Отримати демо <MoveRight className="w-4 h-4 ml-2" />
-            </Button>
+            {/* Темная кнопка */}
+            <StarBorder variant="dark">
+              Написати нам <PhoneCall className="w-4 h-4 ml-2 inline" />
+            </StarBorder>
+            {/* Светлая кнопка */}
+            <StarBorder variant="light">
+              Отримати демо <MoveRight className="w-4 h-4 ml-2 inline" />
+            </StarBorder>
           </div>
         </div>
       </div>
@@ -77,3 +72,4 @@ function Hero() {
 }
 
 export { Hero };
+
