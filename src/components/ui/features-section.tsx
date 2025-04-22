@@ -65,7 +65,7 @@ export function FeaturesSection() {
             />
             <Grid size={20} />
             <div className="relative z-20 flex flex-col">
-              <div className="min-h-[32px] flex items-center mb-0">
+              <div className="min-h-[56px] flex items-end mb-0">
                 <feature.icon className="w-8 h-8 text-white mr-0" />
               </div>
               <p className="text-lg font-extrabold text-white mb-4 font-russo">
