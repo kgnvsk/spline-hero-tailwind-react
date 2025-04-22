@@ -2,6 +2,7 @@
 import React from "react";
 import { User, Users, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { GlowingEffect } from "@/components/ui/glowing-effect"; // добавляем импорт
 
 const benefits = [
   {
@@ -80,11 +81,21 @@ export function BenefitsSection() {
             variants={itemVariants}
             className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-7 rounded-3xl overflow-hidden shadow-lg backdrop-blur-sm"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/20 mb-6">
+            {/* GlowingEffect for border */}
+            <GlowingEffect
+              spread={38}
+              glow={true}
+              disabled={false}
+              proximity={72}
+              inactiveZone={0.01}
+              borderWidth={3}
+              className="z-10"
+            />
+            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/20 mb-6 relative z-20">
               <Icon className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-4">{title}</h3>
-            <ul className="text-neutral-400 leading-snug text-base space-y-0 list-none pl-0">
+            <h3 className="text-lg font-bold text-white mb-4 relative z-20">{title}</h3>
+            <ul className="text-neutral-400 leading-snug text-base space-y-0 list-none pl-0 relative z-20">
               {description.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
@@ -95,3 +106,4 @@ export function BenefitsSection() {
     </section>
   );
 }
+
