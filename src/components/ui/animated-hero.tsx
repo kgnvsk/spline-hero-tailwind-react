@@ -3,13 +3,16 @@ import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, ArrowRight } from "lucide-react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
+  const isMobile = useIsMobile();
+  
   const titles = useMemo(
     () => [
-      "24/7 підтримка\nклієнтів", 
-      "збільшення\nконверсії", 
+      "24/7 підтримка клієнтів", 
+      "збільшення конверсії", 
       "зниження витрат"
     ],
     []
@@ -31,6 +34,27 @@ function Hero() {
     } catch (error) {
       console.error("Error opening Telegram link:", error);
     }
+  };
+
+  const renderTitle = (title: string) => {
+    if (isMobile) {
+      return title.split('\n').length > 1 
+        ? title.split('\n').map((line, lineIdx) => (
+            <div key={lineIdx} className="leading-tight">
+              {line}
+            </div>
+          ))
+        : title.includes(' ') 
+          ? title.split(' ').map((word, idx, arr) => (
+              idx === Math.floor(arr.length / 2) ? (
+                <React.Fragment key={idx}>
+                  {arr.slice(0, idx).join(' ')}<br />{arr.slice(idx).join(' ')}
+                </React.Fragment>
+              ) : null
+            )).filter(Boolean)
+          : title;
+    }
+    return title;
   };
 
   return (
@@ -56,11 +80,7 @@ function Hero() {
                         : { y: titleNumber > idx ? -150 : 150, opacity: 0 }
                     }
                   >
-                    {title.split('\n').map((line, lineIdx) => (
-                      <div key={lineIdx} className="leading-tight">
-                        {line}
-                      </div>
-                    ))}
+                    {renderTitle(title)}
                   </motion.span>
                 ))}
               </span>
