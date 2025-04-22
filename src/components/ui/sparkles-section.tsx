@@ -99,10 +99,10 @@ export function SparklesSection() {
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(180px_80px_at_top,transparent_20%,white)]"></div>
       </div>
       
-      {/* Widget container - now centered */}
+      {/* Widget container - now slightly left of center */}
       <div
         ref={widgetRef}
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50"
+        className="absolute bottom-4 left-1/2 transform -translate-x-[55%] z-50"
         style={{ pointerEvents: "auto" }}
       />
     </div>
