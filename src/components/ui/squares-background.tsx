@@ -1,4 +1,3 @@
-
 import { useRef, useEffect, useState } from "react"
 
 interface SquaresProps {
@@ -35,8 +34,8 @@ export function Squares({
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas background to transparent
-    canvas.style.background = "transparent"
+    // Возвращаем фоновый цвет как был
+    canvas.style.background = "#060606"
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth
@@ -61,7 +60,6 @@ export function Squares({
           const squareX = x - (gridOffset.current.x % squareSize)
           const squareY = y - (gridOffset.current.y % squareSize)
 
-          // Calculate grid coordinates for comparison with hoveredSquare
           const gridX = Math.floor((x - startX) / squareSize)
           const gridY = Math.floor((y - startY) / squareSize)
 
@@ -70,7 +68,6 @@ export function Squares({
             gridX === hoveredSquare.x &&
             gridY === hoveredSquare.y
           ) {
-            // Draw filled square for hover effect with enhanced visibility
             ctx.fillStyle = hoverFillColor
             ctx.fillRect(squareX, squareY, squareSize, squareSize)
           }
@@ -80,7 +77,20 @@ export function Squares({
         }
       }
 
-      // Skip the gradient overlay to make sure content is visible
+      // Возвращаем радиальный градиент
+      const gradient = ctx.createRadialGradient(
+        canvas.width / 2,
+        canvas.height / 2,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)) / 2,
+      )
+      gradient.addColorStop(0, "rgba(6, 6, 6, 0)")
+      gradient.addColorStop(1, "#060606")
+
+      ctx.fillStyle = gradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
 
     const updateAnimation = () => {
@@ -116,7 +126,6 @@ export function Squares({
     }
 
     const handleMouseMove = (event: MouseEvent) => {
-      console.log("Mouse move detected on canvas")
       const rect = canvas.getBoundingClientRect()
       const mouseX = event.clientX - rect.left
       const mouseY = event.clientY - rect.top
@@ -125,23 +134,22 @@ export function Squares({
       const startY = Math.floor(gridOffset.current.y / squareSize) * squareSize
 
       const hoveredSquareX = Math.floor(
-        (mouseX + (gridOffset.current.x % squareSize)) / squareSize
+        (mouseX + gridOffset.current.x - startX) / squareSize,
       )
       const hoveredSquareY = Math.floor(
-        (mouseY + (gridOffset.current.y % squareSize)) / squareSize
+        (mouseY + gridOffset.current.y - startY) / squareSize,
       )
 
       setHoveredSquare({ x: hoveredSquareX, y: hoveredSquareY })
     }
 
     const handleMouseLeave = () => {
-      console.log("Mouse leave detected on canvas")
       setHoveredSquare(null)
     }
 
-    // Add event listeners directly to the canvas
-    canvas.addEventListener("mousemove", handleMouseMove)
-    canvas.addEventListener("mouseleave", handleMouseLeave)
+    // Возвращаем обработчики событий на window
+    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mouseleave", handleMouseLeave)
 
     // Initial setup
     resizeCanvas()
@@ -150,15 +158,13 @@ export function Squares({
     // Cleanup
     return () => {
       window.removeEventListener("resize", resizeCanvas)
-      canvas.removeEventListener("mousemove", handleMouseMove)
-      canvas.removeEventListener("mouseleave", handleMouseLeave)
+      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("mouseleave", handleMouseLeave)
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current)
       }
     }
   }, [direction, speed, borderColor, hoverFillColor, squareSize])
-
-  console.log("Hover state:", hoveredSquare) // Debugging
 
   return (
     <canvas
@@ -169,7 +175,7 @@ export function Squares({
         position: "absolute", 
         top: 0, 
         left: 0,
-        pointerEvents: "auto", 
+        pointerEvents: "none", // Изменил на none, чтобы не перекрывать контент
         zIndex: 1,
         cursor: "crosshair"
       }}
