@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 
@@ -5,7 +6,7 @@ export function SparklesSection() {
   const widgetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // добавить только если элемента нет
+    // Script should only be added once
     if (!document.getElementById("elevenlabs-widget-script")) {
       const script = document.createElement("script");
       script.id = "elevenlabs-widget-script";
@@ -14,10 +15,15 @@ export function SparklesSection() {
       script.type = "text/javascript";
       document.body.appendChild(script);
     }
+
+    // Return cleanup function to remove the script when component unmounts
+    return () => {
+      // We don't remove the script to avoid affecting other potential instances
+    };
   }, []);
 
   useEffect(() => {
-    // Переместим виджет внутрь текущей секции при маунте
+    // Create widget only when widgetRef is available and doesn't already have the widget
     if (widgetRef.current && !widgetRef.current.querySelector("elevenlabs-convai")) {
       const widget = document.createElement("elevenlabs-convai");
       widget.setAttribute("agent-id", "aGDIPWEQyXk5ZFnlOvI6");
@@ -26,6 +32,16 @@ export function SparklesSection() {
       widget.style.margin = "0";
       widgetRef.current.appendChild(widget);
     }
+
+    // Cleanup function to remove the widget when component unmounts
+    return () => {
+      if (widgetRef.current) {
+        const widget = widgetRef.current.querySelector("elevenlabs-convai");
+        if (widget) {
+          widgetRef.current.removeChild(widget);
+        }
+      }
+    };
   }, []);
 
   return (
