@@ -1,7 +1,7 @@
 
 import { SplineSceneBasic } from "@/components/SplineHero";
 import { Hero } from "@/components/ui/animated-hero";
-import { BenefitsSe ction } from "@/components/ui/benefits-section";
+import { BenefitsSection } from "@/components/ui/benefits-section";
 import { FeaturesSection } from "@/components/ui/features-section";
 import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
@@ -27,7 +27,7 @@ const Index = () => {
         <div className="relative min-h-screen">
           <SplineSceneBasic />
           <Hero />
-          <BenefitsSe ction />
+          <BenefitsSection />
           <FeaturesSection />
           <ProcessSection />
           <PossibilitiesSection />
@@ -38,3 +38,4 @@ const Index = () => {
 };
 
 export default Index;
+
