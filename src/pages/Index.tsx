@@ -5,8 +5,7 @@ import { BenefitsSection } from "@/components/ui/benefits-section";
 import { FeaturesSection } from "@/components/ui/features-section";
 import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
-import { Spotlight } from "@/components/ui/spotlight";
-import { Squares } from "@/components/ui/squares-background";
+import { BackgroundCells } from "@/components/ui/background-cells";
 
 const Index = () => {
   return (
@@ -17,23 +16,10 @@ const Index = () => {
         style={{ zIndex: 0 }}
         aria-hidden="true"
       />
-      
-      {/* Spotlight effect */}
-      <div className="fixed inset-0" style={{ zIndex: 1 }}>
-        <Spotlight className="pointer-events-none" />
+      {/* Новый красивый фон */}
+      <div className="fixed inset-0 w-full h-full" style={{ zIndex: 1 }}>
+        <BackgroundCells className="bg-slate-950" />
       </div>
-      
-      {/* Animated grid with hover effects */}
-      <div className="fixed inset-0 w-full h-full" style={{ zIndex: 2 }}>
-        <Squares
-          direction="diagonal"
-          speed={0.5}
-          squareSize={40}
-          borderColor="#6b6b6b"
-          hoverFillColor="#333333"
-        />
-      </div>
-      
       {/* Main content */}
       <div className="relative z-10">
         <SplineSceneBasic />
