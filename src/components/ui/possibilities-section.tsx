@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Zap, Globe, Workflow, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
@@ -81,7 +80,7 @@ export function PossibilitiesSection() {
           <motion.div
             key={item.title}
             variants={itemVariants}
-            className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-6 rounded-3xl overflow-hidden backdrop-blur-sm h-full flex flex-col"
+            className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-6 rounded-3xl overflow-hidden backdrop-blur-sm h-full"
           >
             <GlowingEffect
               spread={38}
@@ -96,8 +95,8 @@ export function PossibilitiesSection() {
             <div className="relative z-20 flex flex-col h-full">
               <item.icon className="w-8 h-8 text-white mb-4" />
               <p className="text-lg font-extrabold mb-4 font-russo text-white">{item.title}</p>
-              <div className="flex-grow"></div>
-              <p className="text-neutral-400 text-sm font-russo">{item.description}</p>
+              <div className="flex-1"></div>
+              <p className="text-neutral-400 text-sm font-russo mt-auto">{item.description}</p>
             </div>
           </motion.div>
         ))}

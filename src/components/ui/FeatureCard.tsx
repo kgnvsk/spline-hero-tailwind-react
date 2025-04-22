@@ -32,12 +32,12 @@ export function FeatureCard({ icon: Icon, title, items }: FeatureCardProps) {
           {title}
         </h3>
         
-        <div className="flex-grow"></div>
+        <div className="flex-1"></div>
         
-        <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo">
+        <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-russo mt-auto">
           {items.map((item, index) => (
-            <li key={index} className="flex items-center">
-              <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0"></span>
+            <li key={index} className="flex items-start">
+              <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0 mt-1.5"></span>
               <span className="leading-snug">{item}</span>
             </li>
           ))}
