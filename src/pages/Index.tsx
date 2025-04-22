@@ -11,14 +11,15 @@ import { Squares } from "@/components/ui/squares-background";
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* ЧЁРНЫЙ ФОН */}
+      {/* Black background */}
       <div
-        className="fixed inset-0 w-full h-full bg-black z-0"
+        className="fixed inset-0 w-full h-full bg-black"
+        style={{ zIndex: 0 }}
         aria-hidden="true"
       />
       
-      {/* АНИМИРОВАННАЯ СЕТКА - стоит в слое z-10 */}
-      <div className="fixed inset-0 w-full h-full" style={{ zIndex: 10 }}>
+      {/* Grid placed above content but with pointer-events enabled */}
+      <div className="fixed inset-0 w-full h-full" style={{ zIndex: 30 }}>
         <Squares
           direction="diagonal"
           speed={0.5}
@@ -28,20 +29,19 @@ const Index = () => {
         />
       </div>
       
-      {/* ВЕСЬ КОНТЕНТ (z-20) */}
-      <div className="relative" style={{ zIndex: 20 }}>
-        {/* Spotlight не должен получать события мыши */}
+      {/* Spotlight effect (beneath grid) */}
+      <div className="fixed inset-0" style={{ zIndex: 20 }}>
         <Spotlight className="pointer-events-none" />
-        
-        {/* Контент должен получать события мыши */}
-        <div>
-          <SplineSceneBasic />
-          <Hero />
-          <BenefitsSection />
-          <FeaturesSection />
-          <ProcessSection />
-          <PossibilitiesSection />
-        </div>
+      </div>
+      
+      {/* Content beneath everything */}
+      <div className="relative" style={{ zIndex: 10 }}>
+        <SplineSceneBasic />
+        <Hero />
+        <BenefitsSection />
+        <FeaturesSection />
+        <ProcessSection />
+        <PossibilitiesSection />
       </div>
     </div>
   );

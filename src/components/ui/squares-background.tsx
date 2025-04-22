@@ -39,8 +39,8 @@ export function Squares({
     canvas.style.background = "#060606"
 
     const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
       numSquaresX.current = Math.ceil(canvas.width / squareSize) + 1
       numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1
     }
@@ -123,7 +123,7 @@ export function Squares({
     }
 
     const handleMouseMove = (event: MouseEvent) => {
-      console.log("Mouse move detected on canvas") // Extra debug log
+      console.log("Mouse move detected on canvas")
       const rect = canvas.getBoundingClientRect()
       const mouseX = event.clientX - rect.left
       const mouseY = event.clientY - rect.top
@@ -142,27 +142,28 @@ export function Squares({
     }
 
     const handleMouseLeave = () => {
-      console.log("Mouse leave detected on canvas") // Extra debug log
+      console.log("Mouse leave detected on canvas")
       setHoveredSquare(null)
     }
 
-    canvas.addEventListener("mousemove", handleMouseMove)
-    canvas.addEventListener("mouseleave", handleMouseLeave)
+    // Important: Add event listeners directly to the window
+    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mouseleave", handleMouseLeave)
 
     // Initial setup
-    resizeCanvas() // Make sure to call this
+    resizeCanvas()
     requestRef.current = requestAnimationFrame(updateAnimation)
 
     // Cleanup
     return () => {
       window.removeEventListener("resize", resizeCanvas)
-      canvas.removeEventListener("mousemove", handleMouseMove)
-      canvas.removeEventListener("mouseleave", handleMouseLeave)
+      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("mouseleave", handleMouseLeave)
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current)
       }
     }
-  }, [direction, speed, borderColor, hoverFillColor, hoveredSquare, squareSize])
+  }, [direction, speed, borderColor, hoverFillColor, squareSize])
 
   console.log("Hover state:", hoveredSquare) // Debugging
 
@@ -174,10 +175,10 @@ export function Squares({
         display: "block", 
         position: "absolute", 
         top: 0, 
-        left: 0, 
-        pointerEvents: "auto", 
+        left: 0,
+        pointerEvents: "all", // This forces the canvas to receive all pointer events
         zIndex: 10,
-        cursor: "crosshair" // Add a cursor to make it obvious it's interactive
+        cursor: "crosshair", 
       }}
     />
   )
