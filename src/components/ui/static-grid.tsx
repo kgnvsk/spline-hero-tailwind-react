@@ -16,22 +16,23 @@ export const StaticGrid: React.FC<StaticGridProps> = ({
 }) => {
   // Генерируем CSS для сетки через градиенты
   const gridStyle: React.CSSProperties = {
-    position: "absolute", // Изменено с fixed на absolute
+    position: "absolute", 
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     width: "100vw",
     height: "100vh",
-    backgroundColor: "transparent", // Remove background color to see through it
+    backgroundColor: "transparent", 
     backgroundImage: `
       linear-gradient(to right, ${color} 1px, transparent 1px),
       linear-gradient(to bottom, ${color} 1px, transparent 1px)
     `,
     backgroundSize: `${size}px ${size}px`,
     opacity: opacity,
-    pointerEvents: "none", // So the grid doesn't block interactions
+    pointerEvents: "none", 
     userSelect: "none",
+    zIndex: 0, // Явно устанавливаем нулевой z-index
   };
 
   return <div className={className} style={gridStyle} />;

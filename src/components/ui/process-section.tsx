@@ -46,7 +46,7 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <div className="py-20 bg-black relative overflow-visible">
+    <div className="py-20 relative overflow-visible">
       <ProcessSectionHeader />
 
       {/* Desktop version */}

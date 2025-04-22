@@ -12,7 +12,7 @@ import { Squares } from "@/components/ui/squares-background";
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "#101014" }}>
-      {/* Static grid as the back layer */}
+      {/* Static grid as the absolute bottom layer */}
       <StaticGrid 
         color="#6b6b6b" 
         size={48} 

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useId } from "react";
 import { MessageCircle, TrendingUp, Database, ChartBar } from "lucide-react";
@@ -29,7 +30,7 @@ export function FeaturesSection() {
   };
 
   return (
-    <div className="py-10 lg:py-20 bg-black">
+    <div className="py-10 lg:py-20 relative">
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +51,7 @@ export function FeaturesSection() {
           <motion.div
             key={feature.title}
             variants={itemVariants}
-            className="relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden"
+            className="relative bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 p-6 rounded-3xl overflow-hidden"
           >
             <Grid size={20} />
             <div className="relative z-20">

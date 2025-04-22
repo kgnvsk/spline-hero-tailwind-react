@@ -53,7 +53,7 @@ export function PossibilitiesSection() {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-black overflow-hidden">
+    <section className="py-16 lg:py-24 relative overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ export function PossibilitiesSection() {
           <motion.div
             key={item.title}
             variants={itemVariants}
-            className="relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-6 rounded-3xl overflow-hidden"
+            className="relative bg-gradient-to-b from-neutral-900/80 to-neutral-950/80 p-6 rounded-3xl overflow-hidden"
           >
             <Grid size={20} />
             <div className="relative z-20">

@@ -1,3 +1,4 @@
+
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
@@ -22,7 +23,7 @@ function Hero() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full bg-black text-white">
+    <div className="w-full text-white relative">
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
