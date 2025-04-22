@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Zap, Globe, Workflow, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
@@ -105,16 +104,14 @@ export function PossibilitiesSection() {
               <div className="mb-4">
                 <item.icon className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-extrabold mb-4 font-russo text-white">{item.title}</h3>
+              <h3 className="text-xl font-extrabold mb-4 font-russo text-white text-left">{item.title}</h3>
               <div className="flex-1"></div>
-              <ul className="text-neutral-400 pl-0 list-none space-y-3 mt-6">
-                {item.description.map((desc, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0 mt-1.5"></span>
-                    <span className="font-russo text-sm">{desc}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-6 flex items-start text-left">
+                <span className="mr-4 mt-1.5 inline-block w-3 h-3 bg-neutral-400 rounded-full flex-shrink-0"></span>
+                <span className="font-russo text-base md:text-lg text-white font-bold leading-snug" style={{lineHeight: 1.32}}>
+                  {item.description[0]}
+                </span>
+              </div>
             </div>
           </motion.div>
         ))}
