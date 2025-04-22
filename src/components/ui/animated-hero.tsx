@@ -1,3 +1,4 @@
+
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
@@ -26,14 +27,14 @@ function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
-              <span className="text-white">АІ менеждер це:</span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
+            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center">
+              <span className="text-3xl md:text-4xl block mb-2">АІ менеджер це:</span>
+              <span className="relative flex w-full justify-center overflow-hidden text-center">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold"
+                    className="absolute font-semibold whitespace-nowrap"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
