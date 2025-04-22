@@ -1,13 +1,12 @@
-
 import React from "react";
 import { MessageCircle, LineChart, Users, PieChart } from "lucide-react";
 import { useId } from "react";
 
-// Градиентные иконки (фон + иконка — как в референсе)
+// Градіентні іконки (фон + іконка — як в референсі)
 const iconBg =
   "flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-[#8674f8] to-[#36b3ff] mb-6 shadow-md";
 
-// Данные
+// Дані
 const features = [
   {
     icon: <MessageCircle className="w-7 h-7 text-white" />,
@@ -109,7 +108,7 @@ function GridPatternCardBg({ pattern, size }: { pattern?: number[][]; size?: num
   );
 }
 
-// Главная секция
+// Головна секція
 export function FeaturesSectionWithCardGradient() {
   return (
     <section className="py-14 lg:py-24 font-russo">
@@ -129,7 +128,7 @@ export function FeaturesSectionWithCardGradient() {
               </div>
               <div className="relative z-10 flex flex-col h-full">
                 <h3 className="text-lg font-extrabold text-slate-900 dark:text-white mb-4">{feature.title}</h3>
-                <ul className="text-neutral-700 dark:text-neutral-400 space-y-2 text-base pl-0 list-disc ml-4">
+                <ul className="text-neutral-600 dark:text-neutral-300 space-y-2 text-base pl-0 list-disc ml-4">
                   {feature.items.map((item, idx) => (
                     <li key={idx} className="leading-snug">
                       {item}
