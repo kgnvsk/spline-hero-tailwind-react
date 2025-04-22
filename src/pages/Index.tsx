@@ -5,7 +5,7 @@ import { BenefitsSection } from "@/components/ui/benefits-section";
 import { FeaturesSection } from "@/components/ui/features-section";
 import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
-import { BackgroundCells } from "@/components/ui/background-cells";
+import { Squares } from "@/components/ui/squares-background";
 
 const Index = () => {
   return (
@@ -16,9 +16,15 @@ const Index = () => {
         style={{ zIndex: 0 }}
         aria-hidden="true"
       />
-      {/* Новый красивый фон */}
+      {/* Animated grid background with gradient */}
       <div className="fixed inset-0 w-full h-full" style={{ zIndex: 1 }}>
-        <BackgroundCells className="bg-slate-950" />
+        <Squares
+          direction="right"
+          speed={1}
+          borderColor="#333"
+          squareSize={40}
+          hoverFillColor="#222"
+        />
       </div>
       {/* Main content */}
       <div className="relative z-10">
