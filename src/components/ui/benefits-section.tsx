@@ -1,4 +1,3 @@
-
 import React from "react";
 import { User, Users, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
@@ -49,13 +48,13 @@ export function BenefitsSection() {
   };
 
   return (
-    <section className="py-14 lg:py-20 relative z-10">
+    <section className="py-14 lg:py-20 relative z-10 font-manrope">
       <motion.h2
         initial={{ opacity: 0, y: -16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-3xl md:text-4xl font-bold text-center font-playfair heading-gradient heading-shadow mb-2"
+        className="text-3xl md:text-4xl font-extrabold text-center font-manrope heading-gradient heading-shadow mb-2"
       >
         Переваги AI Sales Manager
       </motion.h2>
@@ -64,7 +63,7 @@ export function BenefitsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-        className="text-center text-neutral-400 max-w-2xl mx-auto mb-12"
+        className="text-center text-neutral-400 max-w-2xl mx-auto mb-12 font-manrope"
       >
         AI Sales Manager &amp; Consultant суттєво перевершує звичайного працівника
       </motion.p>
@@ -81,7 +80,6 @@ export function BenefitsSection() {
             variants={itemVariants}
             className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-7 rounded-3xl overflow-hidden shadow-lg backdrop-blur-sm"
           >
-            {/* GlowingEffect for border - now properly enabled */}
             <GlowingEffect
               spread={38}
               glow={true}
@@ -94,7 +92,7 @@ export function BenefitsSection() {
             <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/20 mb-6 relative z-20">
               <Icon className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-4 relative z-20 font-playfair">{title}</h3>
+            <h3 className="text-lg font-bold text-white mb-4 relative z-20 font-manrope">{title}</h3>
             <ul className="text-neutral-400 leading-snug text-base space-y-0 list-none pl-0 relative z-20">
               {description.map((item, i) => (
                 <li key={i}>{item}</li>

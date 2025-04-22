@@ -9,7 +9,7 @@ export const ProcessSectionHeader = () => (
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="text-3xl md:text-4xl font-bold text-center font-playfair heading-gradient heading-shadow mb-2"
+      className="text-3xl md:text-4xl font-extrabold text-center font-manrope heading-gradient heading-shadow mb-2"
     >
       Як працює AI Sales Manager
     </motion.h2>
@@ -18,7 +18,7 @@ export const ProcessSectionHeader = () => (
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-      className="text-center text-neutral-400 max-w-2xl mx-auto"
+      className="text-center text-neutral-400 font-manrope max-w-2xl mx-auto"
     >
       AI Sales Manager інтегрується у ваші системи та працює на повну потужність
     </motion.p>

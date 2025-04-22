@@ -1,9 +1,8 @@
-
 import React from "react";
 import { useId } from "react";
 import { MessageCircle, TrendingUp, Database, ChartBar } from "lucide-react";
 import { motion } from "framer-motion";
-import { GlowingEffect } from "@/components/ui/glowing-effect"; // Added import
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export function FeaturesSection() {
   const containerVariants = {
@@ -31,13 +30,13 @@ export function FeaturesSection() {
   };
 
   return (
-    <div className="py-10 lg:py-20 relative z-10">
+    <div className="py-10 lg:py-20 relative z-10 font-manrope">
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-4xl font-bold text-center text-white mb-16"
+        className="text-4xl font-extrabold text-center font-manrope heading-gradient heading-shadow mb-16"
       >
         Основні функції
       </motion.h2>
@@ -54,7 +53,6 @@ export function FeaturesSection() {
             variants={itemVariants}
             className="relative bg-gradient-to-b from-neutral-900/70 to-neutral-950/70 p-6 rounded-3xl overflow-hidden backdrop-blur-sm"
           >
-            {/* Added GlowingEffect for consistency */}
             <GlowingEffect
               spread={38}
               glow={true}
@@ -67,10 +65,10 @@ export function FeaturesSection() {
             <Grid size={20} />
             <div className="relative z-20">
               <feature.icon className="w-8 h-8 text-white mb-4" />
-              <p className="text-lg font-bold text-white mb-4">
+              <p className="text-lg font-extrabold text-white mb-4 font-manrope">
                 {feature.title}
               </p>
-              <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none">
+              <ul className="text-neutral-400 space-y-2 text-sm pl-0 list-none font-manrope">
                 {feature.items.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full mt-2 flex-shrink-0"></span>
@@ -108,7 +106,7 @@ const features = [
     ],
   },
   {
-    title: "Ведення клієнтської бази",
+    title: "Ведення клієнтськ��ї бази",
     icon: Database,
     items: [
       "Сегментація клієнтів",

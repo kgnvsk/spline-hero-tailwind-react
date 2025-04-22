@@ -13,14 +13,11 @@ export default {
 		container: {
 			center: true,
 			padding: '2rem',
-			screens: {
-				'2xl': '1400px'
-			}
+			screens: { '2xl': '1400px' }
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-				playfair: ['Playfair Display', 'serif'],
+				manrope: ['Manrope', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
