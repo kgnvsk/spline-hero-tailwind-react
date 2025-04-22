@@ -1,53 +1,61 @@
 
 import React from "react";
-import { User, Users, Shield } from "lucide-react";
+import { Brain, Users, Shield } from "lucide-react";
 
-// Данные карточек – строго по скриншоту!
+// Тексты и структура строго по скрину
 const features = [
   {
     title: "Людський фактор",
-    icon: User,
+    icon: Brain,
+    gradient: "from-[#7B7FF5] to-[#954EDC]",
     description:
-      "AI Агент не втомлюється, не ображається, не помиляється, не запізнюється, не забуває, не підвладний емоціям.",
+      "AI Агент не вигорає, не обіжається, не помиляється, не запізнюється, не забуває, не підвладний емоціям.",
   },
   {
     title: "Плинність кадрів",
     icon: Users,
+    gradient: "from-[#7B7FF5] to-[#954EDC]",
     description:
       "Цикл роботи кадрів на даній посаді зазвичай займає від декількох місяців до року. З AI Агентом, ви забезпечені від цього.",
   },
   {
     title: "Безпека",
     icon: Shield,
+    gradient: "from-[#7B7FF5] to-[#954EDC]",
     description:
-      "Ви не втрачаєте цінні знання та навички як це буває зазвичай при звільненні спеціаліста.",
+      "Ви не втратите цінні знання та навички як це буває зазвичай при звільненні спеціаліста.",
   },
 ];
 
 export default function AIAgentFeatures() {
   return (
-    <section className="w-full px-2 py-14 max-w-7xl mx-auto relative z-10 font-russo">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="w-full py-16 bg-transparent relative z-10 font-russo">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-2">
         {features.map((feat, i) => (
           <div
             key={i}
-            className="relative bg-black/70 rounded-[36px] px-10 py-9 shadow-xl flex flex-col min-h-[330px] justify-start items-start overflow-hidden"
-            style={{
-              boxShadow:
-                "0 9px 36px -8px rgba(25,31,44,0.18), 0 1.5px 8px rgba(73,65,110,0.08)",
-            }}
+            className="bg-white rounded-[32px] shadow-lg px-10 py-10 flex flex-col items-start min-h-[270px] transition-all"
+            style={{ boxShadow: "0 4px 32px 0 rgba(100,106,164,0.07)" }}
           >
-            {/* Ghost icon в левом верхнем углу */}
-            <div className="absolute left-8 top-8 opacity-10 z-0">
-              <feat.icon size={56} strokeWidth={2.2} />
+            {/* Иконка в круглом фоне с градиентом */}
+            <div className="mb-6">
+              <div
+                className="w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #7B7FF5 0%, #954EDC 100%)",
+                }}
+              >
+                <feat.icon className="text-white" size={32} strokeWidth={2.2} />
+              </div>
             </div>
-            <div className="relative z-10 mt-10">
-              <div className="text-2xl md:text-3xl font-extrabold mb-4 leading-tight text-white font-russo">
-                {feat.title}
-              </div>
-              <div className="text-[20px] text-white/80 font-russo leading-snug font-bold whitespace-pre-line">
-                {feat.description}
-              </div>
+            {/* Тайтл */}
+            <div className="text-2xl md:text-[26px] font-bold mb-2 text-[#1A1F2C]">
+              {feat.title}
+            </div>
+            {/* Описание */}
+            <div className="text-[18px] leading-snug text-[#23242B] font-normal opacity-100 font-russo">
+              {feat.description}
             </div>
           </div>
         ))}
@@ -55,3 +63,4 @@ export default function AIAgentFeatures() {
     </section>
   );
 }
+
