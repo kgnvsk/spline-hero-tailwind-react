@@ -59,7 +59,7 @@ export function Spotlight({
   return (
     <div
       className={cn(
-        'pointer-events-none fixed inset-0 z-30 transition duration-300', // Увеличиваем z-index до 30
+        'pointer-events-none fixed inset-0 z-10 transition duration-300', // Adjust z-index to 10
         className
       )}
       style={{ opacity: isClient ? opacity : 0 }}

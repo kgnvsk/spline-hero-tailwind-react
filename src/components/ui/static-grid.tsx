@@ -16,7 +16,7 @@ export const StaticGrid: React.FC<StaticGridProps> = ({
 }) => {
   // Генерируем CSS для сетки через градиенты
   const gridStyle: React.CSSProperties = {
-    position: "fixed", // Fixed позиционирование для охвата всего экрана
+    position: "absolute", // Change to absolute so we can control it better
     top: 0,
     left: 0,
     right: 0,
@@ -30,7 +30,7 @@ export const StaticGrid: React.FC<StaticGridProps> = ({
     `,
     backgroundSize: `${size}px ${size}px`,
     opacity: opacity,
-    zIndex: 0, // Меняем с -1 на 0, чтобы сетка была видна
+    zIndex: -1, // Back to -1 but we'll make sure it's visible
     pointerEvents: "none", // Чтобы сетка не блокировала клики
     userSelect: "none",
   };

@@ -7,23 +7,24 @@ import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
 import { Spotlight } from "@/components/ui/spotlight";
 import StaticGrid from "@/components/ui/static-grid";
+import { Squares } from "@/components/ui/squares-background";
 
 const Index = () => {
   return (
-    <>
-      {/* Статичная сетка на заднем плане */}
+    <div className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "#101014" }}>
+      {/* Static grid as the bottom layer */}
       <StaticGrid 
         color="#6b6b6b" 
         size={48} 
         opacity={0.4} 
       />
       
-      {/* Обертка для содержимого с более высоким z-index */}
-      <div className="min-h-screen relative" style={{ zIndex: 1 }}>
-        {/* Spotlight layer */}
+      {/* Content layer with higher z-index */}
+      <div className="relative z-1 min-h-screen">
+        {/* Spotlight effect */}
         <Spotlight className="z-10 pointer-events-none" />
         
-        {/* Content layer */}
+        {/* Main content */}
         <div className="relative z-20 min-h-screen">
           <SplineSceneBasic />
           <Hero />
@@ -33,7 +34,7 @@ const Index = () => {
           <PossibilitiesSection />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
