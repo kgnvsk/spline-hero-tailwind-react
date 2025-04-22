@@ -7,7 +7,11 @@ import { ShimmerButton } from "@/components/ui/shimmer-button";
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
-    () => ["24/7 підтримка клієнтів", "збільшення конверсії", "зниження витрат"],
+    () => [
+      "24/7 підтримка\nклієнтів", 
+      "збільшення\nконверсії", 
+      "зниження витрат"
+    ],
     []
   );
 
@@ -43,7 +47,7 @@ function Hero() {
                 {titles.map((title, idx) => (
                   <motion.span
                     key={idx}
-                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-xl md:text-2xl text-center"
+                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-4xl md:text-6xl text-center"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
@@ -52,7 +56,11 @@ function Hero() {
                         : { y: titleNumber > idx ? -150 : 150, opacity: 0 }
                     }
                   >
-                    {title}
+                    {title.split('\n').map((line, lineIdx) => (
+                      <div key={lineIdx} className="leading-tight">
+                        {line}
+                      </div>
+                    ))}
                   </motion.span>
                 ))}
               </span>
@@ -83,4 +91,3 @@ function Hero() {
 }
 
 export { Hero };
-
