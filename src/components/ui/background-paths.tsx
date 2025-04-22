@@ -13,10 +13,10 @@ function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        // Значительно светлее и ярче линии, более насыщенный голубой цвет
-        color: `rgba(80, 180, 255, ${0.6 + i * 0.03})`,
-        // Увеличиваем толщину линий немного для лучшей видимости
-        width: 1.5 + i * 0.1,
+        // Максимально яркий голубой цвет с высокой прозрачностью
+        color: `rgba(33, 195, 240, ${0.9 + i * 0.01})`, // Sky Blue с высокой непрозрачностью
+        // Уменьшаем толщину, но делаем более яркими
+        width: 0.5 + i * 0.05,
     }));
 
     return (
@@ -26,7 +26,7 @@ function FloatingPaths({ position }: { position: number }) {
                 viewBox="0 0 696 316"
                 fill="none"
                 style={{ 
-                    filter: 'brightness(2) contrast(1.5)', 
+                    filter: 'brightness(3) contrast(2)', 
                     mixBlendMode: 'screen',
                     opacity: 1
                 }}
@@ -61,7 +61,7 @@ export function SiteBackground() {
         <div 
             className="fixed inset-0 z-10 w-full h-full pointer-events-none overflow-hidden"
             style={{ 
-                mixBlendMode: 'plus-lighter', 
+                mixBlendMode: 'screen', 
                 background: 'transparent' 
             }}
         >
@@ -72,3 +72,6 @@ export function SiteBackground() {
         </div>
     );
 }
+
+export default SiteBackground;
+
