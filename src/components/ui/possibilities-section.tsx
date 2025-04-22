@@ -17,7 +17,7 @@ const possibilities = [
     title: "Мультиплатформність",
     icon: Globe,
     description: [
-      "Інтегрується не лише з Instagram, а й із Facebook Messenger, WhatsApp Business та іншими каналами."
+      "Інтегрується не лише з Instagram, а й з Facebook Messenger, WhatsApp Business та іншими каналами."
     ]
   },
   {
@@ -107,7 +107,7 @@ export function PossibilitiesSection() {
               </div>
               <h3 className="text-lg font-extrabold mb-4 font-russo text-white">{item.title}</h3>
               <div className="flex-1"></div>
-              <ul className="text-neutral-400 pl-0 list-none space-y-3 mt-6">
+              <ul className="text-neutral-400 pl-0 list-none space-y-3 mt-6 h-[100px]"> {/* Added fixed height */}
                 {item.description.map((desc, index) => (
                   <li key={index} className="flex items-start">
                     <span className="mr-2 inline-block w-2 h-2 bg-neutral-400 rounded-full flex-shrink-0 mt-1.5"></span>
