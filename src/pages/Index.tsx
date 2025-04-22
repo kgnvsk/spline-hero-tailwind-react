@@ -2,7 +2,7 @@
 import { SplineSceneBasic } from "@/components/SplineHero";
 import { Hero } from "@/components/ui/animated-hero";
 import { BenefitsSection } from "@/components/ui/benefits-section";
-import { FeaturesSection } from "@/components/ui/features-section";
+import FeaturesSectionWithCardGradient from "@/components/ui/FeaturesSectionWithCardGradient";
 import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
 import { SparklesSection } from "@/components/ui/sparkles-section";
@@ -39,7 +39,7 @@ const Index = () => {
         </Suspense>
         <Hero />
         <BenefitsSection />
-        <FeaturesSection />
+        <FeaturesSectionWithCardGradient />
         <ProcessSection />
         <PossibilitiesSection />
         <div className="relative">
