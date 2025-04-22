@@ -7,6 +7,7 @@ import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
 import { SparklesSection } from "@/components/ui/sparkles-section";
 import { Squares } from "@/components/ui/squares-background";
+import { Suspense } from "react";
 
 const Index = () => {
   return (
@@ -29,7 +30,13 @@ const Index = () => {
       </div>
       {/* Main content */}
       <div className="relative z-10">
-        <SplineSceneBasic />
+        <Suspense fallback={
+          <div className="w-full h-screen flex items-center justify-center bg-black">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-white"></div>
+          </div>
+        }>
+          <SplineSceneBasic />
+        </Suspense>
         <Hero />
         <BenefitsSection />
         <FeaturesSection />
