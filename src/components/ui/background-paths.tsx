@@ -14,14 +14,14 @@ function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        color: `rgba(255,255,255,${0.1 + i * 0.01})`, // Changed to white for better visibility on black
-        width: 0.8 + i * 0.05, // Increased line thickness
+        color: `rgba(255,255,255,${0.2 + i * 0.02})`, // Увеличена яркость белого цвета
+        width: 1.2 + i * 0.08, // Увеличена толщина линий
     }));
 
     return (
         <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-full h-full text-white/50 dark:text-white/70"
+                className="w-full h-full text-white"
                 viewBox="0 0 696 316"
                 fill="none"
             >
@@ -32,11 +32,11 @@ function FloatingPaths({ position }: { position: number }) {
                         d={path.d}
                         stroke="currentColor"
                         strokeWidth={path.width}
-                        strokeOpacity={0.2 + path.id * 0.02} // Increased opacity
-                        initial={{ pathLength: 0.3, opacity: 0.6 }}
+                        strokeOpacity={0.4 + path.id * 0.03} // Значительно увеличена прозрачность
+                        initial={{ pathLength: 0.3, opacity: 0.8 }}
                         animate={{
                             pathLength: 1,
-                            opacity: [0.4, 0.7, 0.4], // Increased opacity range
+                            opacity: [0.6, 0.9, 0.6], // Увеличен диапазон непрозрачности
                             pathOffset: [0, 1, 0],
                         }}
                         transition={{
@@ -53,8 +53,8 @@ function FloatingPaths({ position }: { position: number }) {
 
 export function SiteBackground() {
     return (
-        <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none overflow-hidden">
-            <div className="absolute inset-0 opacity-80"> {/* Increased opacity from 50 to 80 */}
+        <div className="fixed inset-0 z-0 w-full h-full pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 opacity-100"> {/* Изменена прозрачность до 100% */}
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
             </div>

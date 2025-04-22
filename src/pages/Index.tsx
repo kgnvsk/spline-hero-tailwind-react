@@ -6,17 +6,21 @@ import { FeaturesSection } from "@/components/ui/features-section";
 import { ProcessSection } from "@/components/ui/process-section";
 import { PossibilitiesSection } from "@/components/ui/possibilities-section";
 import { SiteBackground } from "@/components/ui/background-paths";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
       <SiteBackground />
-      <SplineSceneBasic />
-      <Hero />
-      <BenefitsSection />
-      <FeaturesSection />
-      <ProcessSection />
-      <PossibilitiesSection />
+      <Spotlight className="z-10" />
+      <div className="relative z-10">
+        <SplineSceneBasic />
+        <Hero />
+        <BenefitsSection />
+        <FeaturesSection />
+        <ProcessSection />
+        <PossibilitiesSection />
+      </div>
     </div>
   );
 };
