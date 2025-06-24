@@ -11,9 +11,9 @@ function Hero() {
   
   const titles = useMemo(
     () => [
-      "24/7 підтримка клієнтів", 
-      "збільшення конверсії", 
-      "зниження витрат"
+      "Мислить, як людина", 
+      "Діє, як машина", 
+      "Продає, як профі"
     ],
     []
   );
@@ -33,6 +33,13 @@ function Hero() {
       window.open("https://t.me/vitalii_2get", "_blank", "noopener,noreferrer");
     } catch (error) {
       console.error("Error opening Telegram link:", error);
+    }
+  };
+
+  const scrollToDemo = () => {
+    const element = document.getElementById('demo-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -58,33 +65,36 @@ function Hero() {
   };
 
   return (
-    <div className="w-full text-white relative z-10">
+    <div className="w-full text-white relative z-10 pt-20">
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
-          <div className="flex gap-4 flex-col">
-            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-center font-russo heading-gradient">
-              <span className="text-3xl md:text-4xl block mb-4 font-russo text-neutral-400 tracking-wide">
-                АІ менеджер це:
-              </span>
-              <span className="relative flex w-full justify-center overflow-visible h-16 md:h-24">
-                &nbsp;
-                {titles.map((title, idx) => (
-                  <motion.span
-                    key={idx}
-                    className="absolute font-semibold whitespace-nowrap font-russo heading-white text-4xl md:text-6xl text-center"
-                    initial={{ opacity: 0, y: "-100" }}
-                    transition={{ type: "spring", stiffness: 50 }}
-                    animate={
-                      titleNumber === idx
-                        ? { y: 0, opacity: 1 }
-                        : { y: titleNumber > idx ? -150 : 150, opacity: 0 }
-                    }
-                  >
-                    {renderTitle(title)}
-                  </motion.span>
-                ))}
-              </span>
+          <div className="flex gap-4 flex-col text-center max-w-4xl">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-center font-russo heading-gradient mb-6">
+              AI-ПРОДАВЕЦЬ
             </h1>
+            <div className="relative flex w-full justify-center overflow-visible h-16 md:h-20 mb-8">
+              {titles.map((title, idx) => (
+                <motion.span
+                  key={idx}
+                  className="absolute font-semibold whitespace-nowrap font-russo heading-white text-2xl md:text-3xl text-center"
+                  initial={{ opacity: 0, y: "-100" }}
+                  transition={{ type: "spring", stiffness: 50 }}
+                  animate={
+                    titleNumber === idx
+                      ? { y: 0, opacity: 1 }
+                      : { y: titleNumber > idx ? -150 : 150, opacity: 0 }
+                  }
+                >
+                  {renderTitle(title)}
+                </motion.span>
+              ))}
+            </div>
+            <p className="text-lg md:text-xl text-gray-300 mb-8 font-russo leading-relaxed">
+              Уявіть менеджера, який ніколи не спить, відповідає миттєво, знає ваш асортимент краще за будь-якого співробітника і закриває угоди прямо в чатах — Instagram, Facebook, Telegram, WhatsApp або на сайті.
+            </p>
+            <p className="text-xl md:text-2xl text-white mb-8 font-russo font-bold">
+              Підніміть рівень продажів і знизьте витрати завдяки впровадженню AI-продавця, який не просто відповідає — а продає!
+            </p>
           </div>
           <div className="flex flex-col md:flex-row gap-3 w-full items-center justify-center">
             <ShimmerButton
@@ -99,7 +109,7 @@ function Hero() {
               shimmerColor="#000"
               background="#fff"
               className="text-black font-russo w-full max-w-xs"
-              onClick={() => handleTelegramClick("Отримати демо")}
+              onClick={scrollToDemo}
             >
               Отримати демо <ArrowRight className="w-4 h-4" />
             </ShimmerButton>

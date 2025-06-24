@@ -5,49 +5,56 @@ import { ProcessSectionHeader } from "./ProcessSectionHeader";
 import { ProcessGrid } from "./ProcessGrid";
 import { PhoneMockup } from "./PhoneMockup";
 import { ProcessFootnote } from "./ProcessFootnote";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const steps = [
   {
-    title: "Інтеграція з CRM",
+    title: "Підключення до каналів",
     description: [
-      "Отримує всі дані про товари: описи, характеристики, ціни, залишки, SKU тощо.",
-      "Автоматично оновлює інформацію при зміні даних (наприклад, коли товар закінчується)."
+      "Ви підключаєте AI-продавця до своїх каналів комунікації і внутрішніх систем"
     ]
   },
   {
-    title: "Комунікація та продаж",
+    title: "Навчання на ваших кейсах",
     description: [
-      "АІ відповідає на типові запитання про розміри, варіанти кольорів, строки доставки тощо.",
-      "Пропонує супутні товари та робить апсейл (наприклад, аксесуари)."
+      "Навчаєте його на своїх кейсах та діалогах"
     ]
   },
   {
-    title: "Автоматичне навчання",
+    title: "Повна автоматизація",
     description: [
-      "АІ 'запам'ятовує' нові запити та відповіді, вдосконалюється з часом.",
-      "Стає ще точнішим у відповідях з кожною взаємодією."
+      "Він бере на себе все — від консультації до оплати"
     ]
   },
   {
-    title: "Підключення до діректу",
+    title: "Результат",
     description: [
-      "Інсталюється в директ вашого Instagram (чи іншої соцмережі, де є приватні повідомлення).",
-      "Має 'розумний' алгоритм діалогів, що допомагає клієнтам у процесі вибору товару чи послуги."
-    ]
-  },
-  {
-    title: "Аналіз запитів та фото",
-    description: [
-      "Якщо клієнт надіслав фото, бот аналізує його, аби уточнити модель чи тип товару.",
-      "За потреби звертається до бази знань, щоб знайти релевантну відповідь."
+      "Ви спостерігаєте, як ростуть продажі без росту штату"
     ]
   }
 ];
 
 export function ProcessSection() {
+  const scrollToDemo = () => {
+    const element = document.getElementById('demo-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="py-20 relative overflow-visible">
-      <ProcessSectionHeader />
+    <div id="process" className="py-20 relative overflow-visible">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-russo">
+          Як це працює?
+        </h2>
+      </motion.div>
 
       {/* Desktop version */}
       <div className="container mx-auto px-4 relative hidden lg:flex flex-row justify-center z-10 gap-10">
@@ -71,6 +78,23 @@ export function ProcessSection() {
           <ProcessFootnote />
         </div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.6 }}
+        className="text-center mt-12"
+      >
+        <ShimmerButton
+          shimmerColor="#000"
+          background="#fff"
+          className="text-black font-russo text-lg px-8 py-4"
+          onClick={scrollToDemo}
+        >
+          ОТРИМАТИ ДЕМО
+        </ShimmerButton>
+      </motion.div>
     </div>
   );
 }
