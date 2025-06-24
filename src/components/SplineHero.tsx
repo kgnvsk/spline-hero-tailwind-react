@@ -35,9 +35,14 @@ export function SplineSceneBasic() {
       />
       
       <div className="flex h-full flex-col md:flex-row">
-        {/* Left content - убираем текст */}
+        {/* Left content */}
         <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
-          {/* Убираем весь текстовый контент, оставляем только пространство для 3D сцены */}
+          <h1 className="text-4xl md:text-5xl font-playfair heading-gradient heading-shadow font-russo">
+            AI-ПРОДАВЕЦЬ
+          </h1>
+          <p className="mt-4 text-neutral-300 max-w-lg font-sans font-russo">
+            Уявіть менеджера, який ніколи не спить, відповідає миттєво, знає ваш асортимент краще за будь-якого співробітника і закриває угоди прямо в чатах — Instagram, Facebook, Telegram, WhatsApp або на сайті.
+          </p>
         </div>
 
         {/* Right content */}

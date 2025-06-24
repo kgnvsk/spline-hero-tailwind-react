@@ -69,9 +69,6 @@ function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex gap-8 py-10 lg:py-20 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col text-center max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-center font-russo heading-gradient mb-6">
-              AI-ПРОДАВЕЦЬ
-            </h1>
             <div className="relative flex w-full justify-center overflow-visible h-16 md:h-20 mb-8">
               {titles.map((title, idx) => (
                 <motion.span
@@ -89,9 +86,6 @@ function Hero() {
                 </motion.span>
               ))}
             </div>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 font-russo leading-relaxed">
-              Уявіть менеджера, який ніколи не спить, відповідає миттєво, знає ваш асортимент краще за будь-якого співробітника і закриває угоди прямо в чатах — Instagram, Facebook, Telegram, WhatsApp або на сайті.
-            </p>
             <p className="text-xl md:text-2xl text-white mb-8 font-russo font-bold">
               Підніміть рівень продажів і знизьте витрати завдяки впровадженню AI-продавця, який не просто відповідає — а продає!
             </p>
