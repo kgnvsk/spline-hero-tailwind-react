@@ -35,14 +35,9 @@ export function SplineSceneBasic() {
       />
       
       <div className="flex h-full flex-col md:flex-row">
-        {/* Left content */}
+        {/* Left content - убираем текст */}
         <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl font-playfair heading-gradient heading-shadow">
-            AI Sales Manager & Consultant
-          </h1>
-          <p className="mt-4 text-neutral-300 max-w-lg font-sans font-russo">
-            Забезпечте ефективну комунікації з потенційними та існуючими клієнтами через канали прямого спілкування (Інстаграм, Facebook, Telegram, Сайт тощо), конвертацію звернень у продажі та розвиток довгострокових відносин з клієнтами, а також зменшіть витрати на працівників.
-          </p>
+          {/* Убираем весь текстовый контент, оставляем только пространство для 3D сцены */}
         </div>
 
         {/* Right content */}
@@ -66,4 +61,3 @@ export function SplineSceneBasic() {
     </Card>
   )
 }
-
