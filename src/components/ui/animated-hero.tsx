@@ -87,14 +87,14 @@ function Hero() {
               ))}
             </div>
             <p className="text-xl md:text-2xl text-white mb-8 font-russo font-bold">
-              Підніміть рівень продажів і знизьте витрати завдяки впровадженню AI-продавця, який не просто відповідає — а продає!
+              Підніміть рівень <span className="heading-gradient">продажів</span> і знизьте <span className="heading-gradient">витрати</span> завдяки впровадженню AI-продавця, який не просто відповідає — а <span className="heading-gradient">продає</span>!
             </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-3 w-full items-center justify-center">
+          <div className="flex flex-col gap-3 w-full items-center justify-center">
             <ShimmerButton
               shimmerColor="#fff"
               background="rgba(0,0,0,1)"
-              className="text-white dark:text-white font-russo w-full max-w-xs mb-3 md:mb-0 md:mr-3"
+              className="text-white dark:text-white font-russo w-full max-w-xs"
               onClick={() => handleTelegramClick("Написати нам")}
             >
               Написати нам <Phone className="w-4 h-4" />

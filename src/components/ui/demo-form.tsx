@@ -35,13 +35,13 @@ export function DemoForm() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-russo">
-            Щодня ви втрачаєте клієнтів через затримки з відповідями, перевантажених менеджерів або пропущені повідомлення.
+            Щодня ви втрачаєте <span className="heading-gradient">клієнтів</span> через затримки з відповідями, перевантажених менеджерів або пропущені повідомлення.
           </h2>
           <p className="text-xl text-white mb-4 font-russo">
-            Пора це зупинити.
+            Пора це <span className="heading-gradient">зупинити</span>.
           </p>
           <p className="text-gray-300 font-russo">
-            Залиште заявку — і ми покажемо вам, як AI-продавець може автоматизувати продажі у ваших каналах уже зараз.
+            Залиште заявку — і ми покажемо вам, як <span className="heading-gradient">AI-продавець</span> може автоматизувати продажі у ваших каналах уже зараз.
           </p>
         </motion.div>
 
@@ -86,14 +86,16 @@ export function DemoForm() {
                 className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-white/50 font-russo"
               />
             </div>
-            <ShimmerButton
-              type="submit"
-              shimmerColor="#000"
-              background="#fff"
-              className="text-black font-russo w-full text-lg py-4"
-            >
-              ОТРИМАТИ ДЕМО
-            </ShimmerButton>
+            <div className="flex justify-center">
+              <ShimmerButton
+                type="submit"
+                shimmerColor="#000"
+                background="#fff"
+                className="text-black font-russo w-full max-w-xs text-lg py-4"
+              >
+                ОТРИМАТИ ДЕМО
+              </ShimmerButton>
+            </div>
           </form>
         </motion.div>
       </div>
